@@ -5,6 +5,8 @@ import { configureStore } from '../../store';
 
 import './styles.css';
 
+import Index from '../Index';
+
 const store = configureStore();
 
 const App = () => (
@@ -14,10 +16,7 @@ const App = () => (
                 <Switch>
 
                     <Route path = '/'>
-                        {/* <Index/> */}
-                    </Route>
-                    <Route path = '/login'>
-                        {/* <Login/> */}
+                        <Index/>
                     </Route>
                     <Route path='/signup'>
                         {/* <SignUp/> */}
