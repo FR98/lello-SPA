@@ -49,3 +49,12 @@ export function* watchLoginStarted() {
     login,
   );
 }
+
+function* refreshToken(action) {}
+
+export function* watchRefreshTokenStarted() {
+  yield takeEvery(
+    types.TOKEN_REFRESH_STARTED,
+    refreshToken,
+  );
+}

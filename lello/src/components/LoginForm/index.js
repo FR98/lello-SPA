@@ -14,7 +14,7 @@ import * as actions from '../../actions/auth';
 
 import './styles.css'; 
 
-const Login = ({
+const LoginForm = ({
     onSubmit,
     isLoading,
     error = null,
@@ -92,4 +92,4 @@ export default connect(
             dispatch(actions.startLogin(username, password));
         },
     }),
-)(Login);
+)(LoginForm);

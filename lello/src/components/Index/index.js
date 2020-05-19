@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 
 import './styles.css'; 
 
-import Login from '../Login';
+import LoginForm from '../LoginForm';
+import LogoutButton from '../LogoutButton';
 
 const Index = () => (
     <Fragment>
-        <Login />
+        <LoginForm />
+        <LogoutButton />
     </Fragment>
 );
 
