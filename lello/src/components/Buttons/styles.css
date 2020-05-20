@@ -1,0 +1,33 @@
+
+.general-button {
+    width: auto;
+    height: auto;
+    border-radius: 12.5px;
+    padding: 0.5% 1.25%;
+    background-color: #acadb0;
+    color: white;
+    border: 0.15rem solid whitesmoke;
+    margin: 0.25%;
+}
+
+.success-button {
+    width: auto;
+    height: auto;
+    border-radius: 12.5px;
+    padding: 0.5% 1.25%;
+    background-color: #078f0e;
+    color: white;
+    border: 0.15rem solid whitesmoke;
+    margin: 0.25%;
+}
+
+.danger-button {
+    width: auto;
+    height: auto;
+    border-radius: 12.5px;
+    padding: 0.5% 1.25%;
+    background-color: #d61818;
+    color: white;
+    border: 0.15rem solid whitesmoke;
+    margin: 0.25%;
+}

@@ -3,12 +3,20 @@ import React, { Fragment } from 'react';
 import './styles.css'; 
 
 import LoginForm from '../LoginForm';
-import LogoutButton from '../LogoutButton';
+import {
+    GeneralBtn,
+    SuccessBtn,
+    DangerBtn,
+} from '../Buttons';
+
+import * as actions from '../../actions/auth';
 
 const Index = () => (
     <Fragment>
         <LoginForm />
-        <LogoutButton />
+        <GeneralBtn text="Configuracion" />
+        <SuccessBtn text="Crear" />
+        <DangerBtn text="Logout" action={ actions.logout() } />
     </Fragment>
 );
 
