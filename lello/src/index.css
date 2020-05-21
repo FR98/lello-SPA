@@ -5,6 +5,47 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: whitesmoke;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.div-display {
+    display: flex;
+    align-items: flex-start;
+}
+
+.div-display-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-display-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-space-between {
+    justify-content: space-between;
+}
+
+.error-text {
+    color: red;
 }
 
 code {
