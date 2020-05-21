@@ -20,19 +20,17 @@ const LoginForm = ({
     onSubmit,
     isLoading,
     error = null,
-    isAuthenticated = false,
-    authUsername = '',
+    isAuthenticated = false
 }) => {
     const [username, changeUsername] = useState('');
     const [password, changePassword] = useState('');
     if (isAuthenticated) {
         return (
             <Redirect to='/dashboard' />
-            // <h1>{`Bienvenido ${authUsername} nuevamente!`}</h1>
         );
     }
     return (
-        <div className="page-content">
+        <div className="page">
             <div className='login-form'>
                 <h1>BIENVENIDO A LELLO</h1>
                 <p>
@@ -60,23 +58,13 @@ const LoginForm = ({
                             }>
                                 {'Enviar'}
                             </button>
-                            // <Link to = 'dashboardTutor'>
-                            //     <button>
-                            //         Continuar
-                            //     </button>
-                            //     {/* <button className="continuar" type="submit" onClick={
-                                //     () => onSubmit(username, password)
-                            //     }>
-                            //     {'Continuar'}
-                            //     </button> */}
-                            // </Link>
                         )
                     }
                 </p>
                 {
                     error && (
                     <p>
-                        <strong>{ error }</strong>
+                        <strong className='error-text'>{ error }</strong>
                     </p>
                     )
                 }
@@ -90,7 +78,6 @@ export default connect(
         isLoading: selectors.getIsAuthenticating(state),
         error: selectors.getAuthenticatingError(state),
         isAuthenticated: selectors.isAuthenticated(state),
-        authUsername: selectors.getAuthUsername(state),
     }),
     dispatch => ({
         onSubmit(username, password) {
