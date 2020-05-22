@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './styles.css'; 
 
-import OptionsList from '../OptionsList';
+import TeamsList from '../TeamsList';
 
 import * as selectors from '../../reducers';
 
@@ -12,7 +12,7 @@ import * as selectors from '../../reducers';
 const Sidebar = ({ data }) => (
     <div className="sidebar">
         {console.log(data)}
-        <OptionsList title="TEAMS" items={[1, 2, 3]}/>
+        <TeamsList />
     </div>
 );
 

@@ -11,6 +11,12 @@ import {
   watchRemoveTeam,
 } from './teams';
 
+import {
+  watchFetchBoards,
+  watchAddBoard,
+  watchRemoveBoard,
+} from './boards';
+
 
 function* mainSaga() {
   yield all([
@@ -19,6 +25,9 @@ function* mainSaga() {
     fork(watchFetchTeams),
     fork(watchAddTeam),
     fork(watchRemoveTeam),
+    fork(watchFetchBoards),
+    fork(watchAddBoard),
+    fork(watchRemoveBoard),
   ]);
 }
 
