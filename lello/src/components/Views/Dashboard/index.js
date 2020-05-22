@@ -9,6 +9,7 @@ import {
 } from '../../Buttons';
 import Navbar from '../../Navbar';
 import Sidebar from '../../Sidebar';
+import CardsBoard from '../../CardsBoard';
 
 
 const Dashboard = () => (
@@ -17,10 +18,7 @@ const Dashboard = () => (
         <div className='page-content'>
             <Sidebar />
             <div className='div-display'>
-                {/* <Board /> */}
-                <GeneralBtn text="Configuracion" />
-                <SuccessBtn text="Crear" />
-                <DangerBtn text="Borrar" />
+                <CardsBoard />
             </div>
         </div>
     </Fragment>

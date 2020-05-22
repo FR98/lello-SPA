@@ -1,0 +1,19 @@
+
+// state:
+// -boards:
+//     -byId
+//     -order
+//     -isFetching
+//     -error
+
+export const FETCH_BOARDS_STARTED = 'FETCH_BOARDS_STARTED';
+export const FETCH_BOARDS_COMPLETED = 'FETCH_BOARDS_COMPLETED';
+export const FETCH_BOARDS_FAILED = 'FETCH_BOARDS_FAILED';
+
+export const ADD_BOARD_STARTED = 'ADD_BOARD_STARTED';
+export const ADD_BOARD_COMPLETED = 'ADD_BOARD_COMPLETED';
+export const ADD_BOARD_FAILED = 'ADD_BOARD_FAILED';
+
+export const REMOVE_BOARD_STARTED = 'REMOVE_BOARD_STARTED';
+export const REMOVE_BOARD_COMPLETED = 'REMOVE_BOARD_COMPLETED';
+export const REMOVE_BOARD_FAILED = 'REMOVE_BOARD_FAILED';
