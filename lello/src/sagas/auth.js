@@ -72,8 +72,8 @@ function* refreshToken(action) {
       );
 
       if (http.isSuccessful(response.status)) {
-          const jResponse = yield response.json();
-          yield put(actions.completeTokenRefresh(jResponse.token));
+          const jsonResult = yield response.json();
+          yield put(actions.completeTokenRefresh(jsonResult.token));
       } else {
           // TODO: poner un redirect al home (login)
           const { non_field_errors } = yield response.json();

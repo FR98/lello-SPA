@@ -20,7 +20,7 @@ export const getAuthUsername = state => authSelectors.getAuthUsername(state.auth
 export const getIsRefreshingToken = state => authSelectors.getIsRefreshingToken(state.auth);
 export const getRefreshingError = state => authSelectors.getRefreshingError(state.auth);
 
-export const getTeam = (state, id) => teamsSelectors.getTeam(state, id);
-export const getTeams = state => teamsSelectors.getTeams(state);
-export const isFetchingTeams = state => teamsSelectors.isFetchingTeams(state);
-export const getFetchingTeamsError = state => teamsSelectors.getFetchingTeamsError(state);
+export const getTeam = (state, id) => teamsSelectors.getTeam(state.teams, id);
+export const getTeams = state => teamsSelectors.getTeams(state.teams);
+export const isFetchingTeams = state => teamsSelectors.isFetchingTeams(state.teams);
+export const getFetchingTeamsError = state => teamsSelectors.getFetchingTeamsError(state.teams);
