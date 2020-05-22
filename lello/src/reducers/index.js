@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import auth, * as authSelectors from './auth';
+import teams, * as teamsSelectors from './teams';
 
 const reducer = combineReducers({
     auth,
+    teams,
 });
 
 export default reducer;
@@ -17,3 +19,8 @@ export const getAuthExpiration = state => authSelectors.getAuthExpiration(state.
 export const getAuthUsername = state => authSelectors.getAuthUsername(state.auth);
 export const getIsRefreshingToken = state => authSelectors.getIsRefreshingToken(state.auth);
 export const getRefreshingError = state => authSelectors.getRefreshingError(state.auth);
+
+export const getTeam = (state, id) => teamsSelectors.getTeam(state, id);
+export const getTeams = state => teamsSelectors.getTeams(state);
+export const isFetchingTeams = state => teamsSelectors.isFetchingTeams(state);
+export const getFetchingTeamsError = state => teamsSelectors.getFetchingTeamsError(state);
