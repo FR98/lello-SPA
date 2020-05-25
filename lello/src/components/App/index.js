@@ -22,7 +22,7 @@ import Dashboard from '../Views/Dashboard';
 import Boards from '../Views/Boards';
 
 
-const UserIsAuthenticated = connectedRouterRedirect({
+export const UserIsAuthenticated = connectedRouterRedirect({
     redirectPath: '/',
     authenticatedSelector: selectors.isAuthenticated,
     redirectAction: routerActions.replace,

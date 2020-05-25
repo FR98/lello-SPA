@@ -5,18 +5,18 @@ import { BrowserRouter as Router, Route, Switch, useParams, useRouteMatch } from
 
 import {
     GeneralBtn,
-} from '../../../Buttons';
-import Navbar from '../../../Navbar';
+} from '../../Buttons';
+import Navbar from '../../Navbar';
+import Calendar from '../../Calendar';
 
-const Board = () => {
-    const { path, url } = useRouteMatch();
+const CalendarView = () => {
     const { id } = useParams();
     return (
         <Fragment>
             <Navbar/>
-            <h1>{id}</h1>
+            <Calendar />
         </Fragment>
     );
 };
 
-export default Board;
+export default CalendarView;
