@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import './styles.css'; 
 import * as selectors from '../../../reducers';
@@ -11,7 +10,7 @@ import {
 } from '../../Buttons';
 
 const ListItem = ({ id, name, isConfirmed = false }) => (
-    <tr className={!isConfirmed ? 'list-item--pending' : ''}>
+    <tr className={"list-item " + (!isConfirmed ? 'pending' : '')}>
         <td>
             <GeneralBtn text={name} action={actions.startFetchingBoards()}/>
         </td>
