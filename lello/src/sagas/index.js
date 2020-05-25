@@ -17,6 +17,12 @@ import {
   watchRemoveBoard,
 } from './boards';
 
+import {
+  watchFetchEvents,
+  watchAddEvent,
+  watchRemoveEvent,
+} from './events';
+
 
 function* mainSaga() {
   yield all([
@@ -28,6 +34,9 @@ function* mainSaga() {
     fork(watchFetchBoards),
     fork(watchAddBoard),
     fork(watchRemoveBoard),
+    fork(watchFetchEvents),
+    fork(watchAddEvent),
+    fork(watchRemoveEvent),
   ]);
 }
 

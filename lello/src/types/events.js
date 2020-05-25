@@ -1,0 +1,19 @@
+
+// state:
+// -events:
+//     -byId
+//     -order
+//     -isFetching
+//     -error
+
+export const FETCH_EVENTS_STARTED = 'FETCH_EVENTS_STARTED';
+export const FETCH_EVENTS_COMPLETED = 'FETCH_EVENTS_COMPLETED';
+export const FETCH_EVENTS_FAILED = 'FETCH_EVENTS_FAILED';
+
+export const ADD_EVENT_STARTED = 'ADD_EVENT_STARTED';
+export const ADD_EVENT_COMPLETED = 'ADD_EVENT_COMPLETED';
+export const ADD_EVENT_FAILED = 'ADD_EVENT_FAILED';
+
+export const REMOVE_EVENT_STARTED = 'REMOVE_EVENT_STARTED';
+export const REMOVE_EVENT_COMPLETED = 'REMOVE_EVENT_COMPLETED';
+export const REMOVE_EVENT_FAILED = 'REMOVE_EVENT_FAILED';

@@ -1,0 +1,20 @@
+
+.board-card {
+    height: 10rem;
+    width: 18rem;
+    background-color: #803b0d;
+    border-radius: 1rem;
+    border: 0.25rem solid black;
+    margin: 0.5rem;
+}
+
+.board-name {
+    text-align: center;
+}
+
+.display-column {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
