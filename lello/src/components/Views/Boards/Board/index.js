@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Redirect } from 'react';
+import { BrowserRouter as Router, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
 
 import './styles.css'; 
 
@@ -7,13 +8,17 @@ import NavbarBoard from '../../../NavbarBoard';
 import Cardlist from '../../../Board/Cardlist';
 
 
-const Board = () => (
-    <Fragment>
-        <Navbar />
-        <NavbarBoard />
-        <Cardlist/>
-    </Fragment>
-);
+const Board = () => {
+    const { path, url } = useRouteMatch();
+    const { id } = useParams();
+    return(
+        <Fragment>
+            <Navbar />
+            <NavbarBoard />
+            <Cardlist/>
+        </Fragment>
+    );
+}
 
 export default Board;
 

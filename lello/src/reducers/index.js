@@ -3,11 +3,13 @@ import { combineReducers } from 'redux';
 import auth, * as authSelectors from './auth';
 import teams, * as teamsSelectors from './teams';
 import boards, * as boardsSelectors from './boards';
+import events, * as eventsSelectors from './events';
 
 const reducer = combineReducers({
     auth,
     teams,
     boards,
+    events,
 });
 
 export default reducer;
@@ -31,3 +33,10 @@ export const getBoard = (state, id) => boardsSelectors.getBoard(state.boards, id
 export const getBoards = state => boardsSelectors.getBoards(state.boards);
 export const isFetchingBoards = state => boardsSelectors.isFetchingBoards(state.boards);
 export const getFetchingBoardsError = state => boardsSelectors.getFetchingBoardsError(state.boards);
+
+export const getEvent = (state, id) => eventsSelectors.getEvent(state.events, id);
+export const getEvents = state => eventsSelectors.getEvents(state.events);
+export const getEventsOnMonth = (state, date) => eventsSelectors.getEventsOnMonth(state.events, date);
+export const getEventsOnDay = (state, date) => eventsSelectors.getEventsOnDay(state.events, date);
+export const isFetchingEvents = state => eventsSelectors.isFetchingEvents(state.events);
+export const getFetchingEventsError = state => eventsSelectors.getFetchingEventsError(state.events);

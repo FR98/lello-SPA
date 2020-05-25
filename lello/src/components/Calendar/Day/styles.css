@@ -1,0 +1,10 @@
+
+.day {
+    /* height: 30rem; */
+    width: 15rem;
+    background-color: rgba(245, 245, 245, 0.75);
+    border-radius: 1rem;
+    margin: 0.5rem;
+    padding: 0.1rem;
+    color: black;
+}

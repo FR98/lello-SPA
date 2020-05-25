@@ -19,10 +19,10 @@ import * as selectors from '../../reducers';
 import TokenRefresh from '../TokenRefresh';
 import Index from '../Views/Index';
 import Dashboard from '../Views/Dashboard';
-import Board from '../Views//Boards/Board';
+import Boards from '../Views/Boards';
 
 
-const UserIsAuthenticated = connectedRouterRedirect({
+export const UserIsAuthenticated = connectedRouterRedirect({
     redirectPath: '/',
     authenticatedSelector: selectors.isAuthenticated,
     redirectAction: routerActions.replace,
@@ -41,10 +41,20 @@ const routes = [
         component: UserIsAuthenticated(Dashboard),
     },
     {
-        path: '/board',
-        exact: true,
-        component: UserIsAuthenticated(Board),
-    }
+        path: '/boards',
+        exact: false,
+        component: UserIsAuthenticated(Boards),
+    },
+    // {
+    //     path: '/users',
+    //     exact: true,
+    //     component: UserIsAuthenticated(Dashboard),
+    // },
+    // {
+    //     path: '/calendars',
+    //     exact: true,
+    //     component: UserIsAuthenticated(Dashboard),
+    // },
 ];
 
 const { store, persistor } = configureStore();

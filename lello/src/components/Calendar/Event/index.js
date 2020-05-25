@@ -6,19 +6,19 @@ import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/boards';
 
 import {
-    GeneralBtn,
+    SuccessBtn,
 } from '../../Buttons';
 
-const ListItem = ({ id, name, isConfirmed = false }) => (
-    <tr className={"list-item " + (!isConfirmed ? 'pending' : '')}>
+const Event = ({ id, title, isConfirmed = false }) => (
+    <tr className={"event " + (!isConfirmed ? 'pending' : '')}>
         <td>
-            <GeneralBtn text={name} action={actions.startFetchingBoards()}/>
+            <SuccessBtn text={title} />
         </td>
     </tr>
 );
 
 export default connect(
     (state, { id }) => ({
-        ...selectors.getTeam(state, id),
+        ...selectors.getEvent(state, id),
     }),
-)(ListItem);
+)(Event);
