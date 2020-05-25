@@ -19,6 +19,7 @@ import * as selectors from '../../reducers';
 import TokenRefresh from '../TokenRefresh';
 import Index from '../Views/Index';
 import Dashboard from '../Views/Dashboard';
+import Board from '../Views//Boards/Board';
 
 
 const UserIsAuthenticated = connectedRouterRedirect({
@@ -39,6 +40,11 @@ const routes = [
         exact: true,
         component: UserIsAuthenticated(Dashboard),
     },
+    {
+        path: '/board',
+        exact: true,
+        component: UserIsAuthenticated(Board),
+    }
 ];
 
 const { store, persistor } = configureStore();

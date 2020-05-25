@@ -1,0 +1,26 @@
+.openCard-container {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    background: white;
+}
+
+.openCard-header,
+.openCard-body {
+    display: flex;
+    flex-direction: row;
+}
+
+.openCard-title,
+.openCard-number,
+.openCard-members,
+.openCard-tags,
+.openCard-date-hour {
+    display: flex;
+    flex-direction: column;
+}
+
+.openCard-hours {
+    display: flex;
+    flex-direction: row;
+}
