@@ -1,4 +1,4 @@
-import React, { Fragment, Redirect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
 import moment from 'moment';
@@ -7,11 +7,12 @@ import './styles.css'; 
 import Day from './Day';
 
 import * as selectors from '../../reducers';
+import * as actions from '../../actions/events';
 
 const now = moment().format("YYYY-MM-DD");
 
-const Calendar = ({ state }) => {
-    console.log(state);
+const Calendar = ({ onLoad }) => {
+    useEffect(onLoad, []);
     return (
         <div className='div-display-column'>
             <h1>{moment().format('DD-MM-YYYY')}</h1>
@@ -27,8 +28,10 @@ const Calendar = ({ state }) => {
 };
 
 export default connect(
-    state => ({
-        state,
-        events: selectors.getEvents(state, now),
+    state => ({}),
+    dispatch => ({
+        onLoad() {
+            dispatch(actions.startFetchingEvents())
+        },
     })
 )(Calendar);

@@ -36,5 +36,7 @@ export const getFetchingBoardsError = state => boardsSelectors.getFetchingBoards
 
 export const getEvent = (state, id) => eventsSelectors.getEvent(state.events, id);
 export const getEvents = state => eventsSelectors.getEvents(state.events);
+export const getEventsOnMonth = (state, date) => eventsSelectors.getEventsOnMonth(state.events, date);
+export const getEventsOnDay = (state, date) => eventsSelectors.getEventsOnDay(state.events, date);
 export const isFetchingEvents = state => eventsSelectors.isFetchingEvents(state.events);
 export const getFetchingEventsError = state => eventsSelectors.getFetchingEventsError(state.events);

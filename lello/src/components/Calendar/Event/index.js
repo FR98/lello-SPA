@@ -6,13 +6,13 @@ import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/boards';
 
 import {
-    GeneralBtn,
+    SuccessBtn,
 } from '../../Buttons';
 
 const Event = ({ id, title, isConfirmed = false }) => (
     <tr className={"event " + (!isConfirmed ? 'pending' : '')}>
         <td>
-            <GeneralBtn text={title} />
+            <SuccessBtn text={title} />
         </td>
     </tr>
 );

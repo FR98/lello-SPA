@@ -6,9 +6,6 @@ import moment from 'moment';
 import './styles.css'; 
 import * as selectors from '../../../reducers';
 
-import {
-    SuccessBtn,
-} from '../../Buttons';
 import Event from '../Event';
 
 
@@ -21,33 +18,36 @@ const dateFormat = {
     sameElse : 'L'
 }
 
-const Day = ({ date, events = [] }) => (
-    <div className='day div-display-column'>
-        <div>
-            <h1>{ moment(date).calendar(null, dateFormat) }</h1>
-            <h3>{ moment(date).format("DD-MM-YYYY") }</h3>
+const Day = ({ date, events = [] }) => {
+    console.log(events)
+    return (
+        <div className='day div-display-column'>
+            <div>
+                <h1>{ moment(date).calendar(null, dateFormat) }</h1>
+                <h3>{ moment(date).format("DD-MM-YYYY") }</h3>
+            </div>
+            {
+                events.length === 0 && (
+                    <p>{ 'No hay' }</p>
+                )
+            }
+            {
+                events.length > 0 && (
+                    <table>
+                        <tbody>
+                            {
+                                events.map(({ id }) => <Event key={id} id={id} />)
+                            }
+                        </tbody>
+                    </table>
+                )
+            }
         </div>
-        {
-            events.length === 0 && (
-                <p>{ 'No hay' }</p>
-            )
-        }
-        {
-            events.length > 0 && (
-                <table>
-                    <tbody>
-                        {
-                            events.map(({ id }) => <Event key={id} id={id} />)
-                        }
-                    </tbody>
-                </table>
-            )
-        }
-    </div>
-);
+    );
+};
 
 export default connect(
     (state, { date }) => ({
-        // events: selectors.getEventsOn(state, date),
+        events: selectors.getEventsOnDay(state, date),
     })
 )(Day);
