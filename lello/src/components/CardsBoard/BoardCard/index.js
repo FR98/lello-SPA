@@ -18,7 +18,7 @@ const BoardCard = ({ id, name, isConfirmed = false }) => (
             <Link to={`/boards/${id}`}>
                 <SuccessBtn text={"Ir a tablero"} />
             </Link>
-            <DangerBtn text={"x"} action={actions.startRemovingBoard()}/>
+            <DangerBtn text={"x"} action={actions.startRemovingBoard(id)}/>
         </div>
     </div>
 );
