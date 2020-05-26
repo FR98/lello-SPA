@@ -4,15 +4,20 @@ import { connect } from 'react-redux';
 import './styles.css'; 
 import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/boards';
+import * as teamsActions from '../../../actions/teams';
 
 import {
     GeneralBtn,
+    DangerBtn,
 } from '../../Buttons';
 
 const ListItem = ({ id, name, isConfirmed = false }) => (
     <tr className={"list-item " + (!isConfirmed ? 'pending' : '')}>
         <td>
-            <GeneralBtn text={name} action={actions.startFetchingBoards()}/>
+            <GeneralBtn text={ name } action={ actions.startFetchingBoards() } />
+        </td>
+        <td>
+            <DangerBtn text={ "x" } action={ teamsActions.startRemovingTeam(id) } />
         </td>
     </tr>
 );

@@ -8,14 +8,18 @@ import * as actions from '../../../actions/boards';
 
 import {
     SuccessBtn,
+    DangerBtn,
 } from '../../Buttons';
 
 const BoardCard = ({ id, name, isConfirmed = false }) => (
     <div className={"board-card display-column " + (!isConfirmed ? 'pending' : '')}>
         <h1 className="board-name">{ name }</h1>
-        <Link to={`/boards/${id}`}>
-            <SuccessBtn text={"Ir a tablero"} />
-        </Link>
+        <div className='div-display-row'>
+            <Link to={`/boards/${id}`}>
+                <SuccessBtn text={"Ir a tablero"} />
+            </Link>
+            <DangerBtn text={"x"} action={actions.startRemovingBoard()}/>
+        </div>
     </div>
 );
 

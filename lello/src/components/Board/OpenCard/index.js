@@ -25,7 +25,6 @@ const OpenCard = ({ state, onLoad }) => {
                 <div className="openCard-header">
                     <label className="openCard-number-title">
                         #{data.number} {data.title}
-                        {console.log("hola", cardid, data)}
                     </label>
                 </div>
                 <div className="openCard-body">
