@@ -18,3 +18,7 @@
     margin: 1rem;
 }
 
+.cardlist-hours{
+    display: flex;
+}
+

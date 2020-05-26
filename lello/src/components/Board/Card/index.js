@@ -1,37 +1,52 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import './styles.css'; 
+
+import * as selectors from '../../../reducers';
 
 import {GeneralBtn} from '../../Buttons';
 
 const Card = ({ data }) => (
     <div className="card-container">
         <div className="card-superiorContainer">
+            {console.log(data)}
             <label className="card-title">
-                Models
+                {data.title}
             </label>
             <label>
-                #1
+                #{data.number}
             </label>
         </div>
         <div className="card-inferiorContainer">
             <label>
-                24/05/2020
+                {
+                    data.deadline ? moment(data.deadline).format('DD/MM/YYYY') : "" 
+                }
             </label>
             <label>
-                2
+                {data.hours_done} | {data.hours_estimated}
             </label>
             <label>
-                Willi
+                {
+                    data.assigned_to.length === 0 && (
+                        <p>{ '' }</p>
+                    )
+                }
+                {
+                    data.assigned_to.length > 0  && (
+                        data.assigned_to.map(({ member_id }) => <div>member_id</div>)        
+                    )
+                }
             </label>
         </div>
     </div>
 );
 
 export default connect(
-    state => ({
-        data: state,
+    (state, {id}) => ({
+        data: selectors.getCard(state, id),
     })
 )(Card);

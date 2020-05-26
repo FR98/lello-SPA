@@ -23,6 +23,18 @@ import {
   watchRemoveEvent,
 } from './events';
 
+import {
+  watchFetchLists,
+  watchAddList,
+  watchRemoveList,
+} from './lists';
+
+import {
+  watchFetchCards,
+  watchAddCard,
+  watchRemoveCard,
+} from './cards';
+
 
 function* mainSaga() {
   yield all([
@@ -37,6 +49,12 @@ function* mainSaga() {
     fork(watchFetchEvents),
     fork(watchAddEvent),
     fork(watchRemoveEvent),
+    fork(watchFetchLists),
+    fork(watchAddList),
+    fork(watchRemoveList),
+    fork(watchFetchCards),
+    fork(watchAddCard),
+    fork(watchRemoveCard),
   ]);
 }
 
