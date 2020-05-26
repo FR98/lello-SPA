@@ -6,9 +6,11 @@ import './styles.css'; 
 import * as selectors from '../../../../reducers';
 import * as actions from '../../../../actions/lists';
 
+import {GeneralBtn} from '../../../Buttons'; 
 import Navbar from '../../../Navbar';
 import NavbarBoard from '../../../NavbarBoard';
 import Cardlist from '../../../Board/Cardlist';
+import OpenCard from '../../../Board/OpenCard';
 
 
 const Board = ({lists, isLoading, onLoad}) => {
@@ -19,22 +21,29 @@ const Board = ({lists, isLoading, onLoad}) => {
         <Fragment>
             <Navbar />
             <NavbarBoard />
-            <div className="cardLists-container">
-                {
-                    lists.length === 0 && !isLoading && (
-                        <p>{ 'No hay' }</p>
-                    )
-                }
-                {
-                    isLoading && (
-                        <p>{ 'Cargando...' }</p>
-                    )
-                }
-                {
-                    lists.length > 0 && !isLoading && (
-                        lists.map(({ id }) => <Cardlist key={id} id={id} />)        
-                    )
-                }
+            <div className="board-container">
+                <div>
+                    <div className="cardLists-container">
+                        {
+                            lists.length === 0 && !isLoading && (
+                                <p>{ 'No hay' }</p>
+                            )
+                        }
+                        {
+                            isLoading && (
+                                <p>{ 'Cargando...' }</p>
+                            )
+                        }
+                        {
+                            lists.length > 0 && !isLoading && (
+                                lists.map(({ id }) => <Cardlist key={id} id={id} />)        
+                            )
+                        }
+                    </div>
+                </div>
+                <div className="btn-addList">
+                    <GeneralBtn text="+ Añadir otra lista"/>
+                </div>
             </div>
         </Fragment>
     );
