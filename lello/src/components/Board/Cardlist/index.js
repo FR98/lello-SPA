@@ -6,7 +6,7 @@ import './styles.css'; 
 import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/cards';
 
-import {GeneralBtn} from '../../Buttons';
+import {GeneralBtn} from '../../Buttons'; 
 import Card from '../Card';
 
 const Cardlist = ({ data, cards, isLoading, onLoad }) => {

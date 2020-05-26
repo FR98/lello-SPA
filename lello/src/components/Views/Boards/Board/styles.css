@@ -1,3 +1,11 @@
 .cardLists-container {
     display: flex;
 }
+
+.board-container {
+    display: flex;
+}
+
+.btn-addList {
+    margin-top: 1rem;
+}

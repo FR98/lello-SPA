@@ -25,3 +25,13 @@
 .card-title {
     font-weight: bold; 
 }
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}

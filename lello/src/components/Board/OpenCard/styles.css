@@ -1,8 +1,35 @@
+html, body{
+    height: 100%;
+}
+
+.all-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+    font-size: 25px;
+}
+
 .openCard-container {
     display: flex;
     flex-direction: column;
-    width: 30rem;
+    width: 50rem;
     background: white;
+    color: black;
+    padding: 2rem;
+    font-size: 1.25rem;
+    border-radius: 5px;
 }
 
 .openCard-header,
@@ -11,8 +38,11 @@
     flex-direction: row;
 }
 
-.openCard-title,
-.openCard-number,
+.openCard-body {
+    justify-content: space-between;
+}
+
+.openCard-number-title,
 .openCard-members,
 .openCard-tags,
 .openCard-date-hour {
@@ -22,5 +52,45 @@
 
 .openCard-hours {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
+
+.openCard-buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.openCard-number-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.openCard-date {
+    display: flex;
+    flex-direction: column;
+}
+
+.openCard-content {
+    background: #E4E4E4;
+    margin-top: 0.25rem;
+    padding: 0.50rem;
+}
+
+.openCard-left-body-container {
+    width:70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-body-container-superior {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.left-body-container-inferior {
+    display: flex;
+    flex-direction: column;
+}
+
