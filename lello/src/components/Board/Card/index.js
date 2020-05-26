@@ -15,7 +15,6 @@ const Card = ({ data }) => {
         <Link to={`${path}/cards/${data.id}`}>
             <div className="card-container">
                 <div className="card-superiorContainer">
-                    {console.log(data)}
                     <label className="card-title">
                         {data.title}
                     </label>

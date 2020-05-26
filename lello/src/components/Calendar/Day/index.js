@@ -19,7 +19,6 @@ const dateFormat = {
 }
 
 const Day = ({ date, events = [] }) => {
-    console.log(events)
     return (
         <div className='day div-display-column'>
             <div>
