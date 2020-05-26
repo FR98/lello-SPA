@@ -1,0 +1,24 @@
+.cardlist-container {
+    display: flex;
+    flex-direction: column;
+    width: 18rem;
+    background: #E4E4E4;
+    height: auto;
+    border-radius: 5px;
+    margin: 1rem 1rem 1rem 1rem;
+    color: black;
+}
+
+.header-cardlist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.cardlist-hours{
+    display: flex;
+}
+

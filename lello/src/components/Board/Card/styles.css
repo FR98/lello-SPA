@@ -1,0 +1,27 @@
+* {-webkit-font-smoothing: antialiased;}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+    margin: 0.5rem;
+    padding: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.card-superiorContainer, 
+.card-inferiorContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.card-inferiorContainer {
+    margin-top: 1rem;
+}
+
+.card-title {
+    font-weight: bold; 
+}

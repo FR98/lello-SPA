@@ -4,12 +4,16 @@ import auth, * as authSelectors from './auth';
 import teams, * as teamsSelectors from './teams';
 import boards, * as boardsSelectors from './boards';
 import events, * as eventsSelectors from './events';
+import lists, * as listsSelectors from './lists';
+import cards, * as cardsSelectors from './cards';
 
 const reducer = combineReducers({
     auth,
     teams,
     boards,
     events,
+    lists,
+    cards,
 });
 
 export default reducer;
@@ -40,3 +44,14 @@ export const getEventsOnMonth = (state, date) => eventsSelectors.getEventsOnMont
 export const getEventsOnDay = (state, date) => eventsSelectors.getEventsOnDay(state.events, date);
 export const isFetchingEvents = state => eventsSelectors.isFetchingEvents(state.events);
 export const getFetchingEventsError = state => eventsSelectors.getFetchingEventsError(state.events);
+
+export const getList = (state, id) => listsSelectors.getList(state.lists, id);
+export const getLists = state => listsSelectors.getLists(state.lists);
+export const isFetchingLists = state => listsSelectors.isFetchingLists(state.lists);
+export const getFetchingListsError = state => listsSelectors.getFetchingListsError(state.lists);
+
+export const getCard = (state, id) => cardsSelectors.getCard(state.cards, id);
+export const getCards = state => cardsSelectors.getCards(state.cards);
+export const isFetchingCards = state => cardsSelectors.isFetchingCards(state.cards);
+export const getFetchingCardsError = state =>  cardsSelectors.getFetchingCardsError(state.cards);
+
