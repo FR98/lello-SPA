@@ -47,7 +47,6 @@ const order = (state = [], action) => {
     switch(action.type) {
         case types.FETCH_LISTS_COMPLETED: {
             return [
-                ...state,
                 ...action.payload.order,
             ]
         }
