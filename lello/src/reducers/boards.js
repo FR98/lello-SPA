@@ -47,7 +47,6 @@ const order = (state = [], action) => {
     switch(action.type) {
         case types.FETCH_BOARDS_COMPLETED: {
             return [
-                ...state,
                 ...action.payload.order,
             ]
         }
