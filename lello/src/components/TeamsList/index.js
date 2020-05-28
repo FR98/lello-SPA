@@ -7,6 +7,7 @@ import './styles.css'; 
 import * as selectors from '../../reducers';
 import * as actions from '../../actions/teams';
 import ListItem from './ListItem';
+import NewTeamForm from './NewTeamForm';
 
 
 const TeamsList = ({ teams, isLoading, onLoad, onSubmit }) => {
@@ -15,6 +16,7 @@ const TeamsList = ({ teams, isLoading, onLoad, onSubmit }) => {
     return (
         <Fragment>
             <h2>{ "TEAMS" }</h2>
+            <NewTeamForm />
             {
                 !isLoading && (
                     <div className="div-display-column">
