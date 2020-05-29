@@ -5,10 +5,12 @@ import './styles.css';
 
 
 // General grey button ---
-const GeneralButton = ({ onClick=null, text}) => (
+const GeneralButton = ({ onClick=null, text, type }) => (
     <button 
       className='general-button' 
-      onClick={ onClick }>
+      onClick={ onClick }
+      type={ type }
+    >
         { text }
     </button>
 );
@@ -39,10 +41,12 @@ export const GeneralBtn = connect(
 
 
 // Success green button ---
-const SuccessButton = ({ onClick=null, text}) => (
+const SuccessButton = ({ onClick=null, text, type }) => (
   <button 
     className='success-button' 
-    onClick={ onClick }>
+    onClick={ onClick }
+    type={ type }
+  >
       { text }
   </button>
 );
@@ -73,10 +77,12 @@ export const SuccessBtn = connect(
 
 
 // Danger red button ---
-const DangerButton = ({ onClick=null, text}) => (
+const DangerButton = ({ onClick=null, text, type }) => (
   <button 
     className='danger-button' 
-    onClick={ onClick }>
+    onClick={ onClick }
+    type={ type }
+  >
       { text }
   </button>
 );

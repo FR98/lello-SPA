@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
 import auth, * as authSelectors from './auth';
 import teams, * as teamsSelectors from './teams';
@@ -14,6 +15,7 @@ const reducer = combineReducers({
     events,
     lists,
     cards,
+    form: formReducer,
 });
 
 export default reducer;
