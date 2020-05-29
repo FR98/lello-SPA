@@ -1,9 +1,14 @@
+body{
+    overflow: hidden;
+}
+
 .cardLists-container {
     display: flex;
 }
 
 .board-container {
     display: flex;
+    overflow: hidden;
 }
 
 .btn-addList {
