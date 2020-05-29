@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import moment from 'moment';
+import Popup from "reactjs-popup";
 
 import './styles.css'; 
 import * as selectors from '../../../reducers';

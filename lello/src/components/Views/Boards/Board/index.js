@@ -11,6 +11,7 @@ import Navbar from '../../../Navbar';
 import NavbarBoard from '../../../NavbarBoard';
 import Cardlist from '../../../Board/Cardlist';
 import OpenCard from '../../../Board/OpenCard';
+import NewCardListForm from '../../../Board/NewCardListForm'
 
 
 const Board = ({ lists, isLoading, onLoad }) => {
@@ -40,7 +41,7 @@ const Board = ({ lists, isLoading, onLoad }) => {
                     </div>
                 </div>
                 <div className="btn-addList">
-                    <GeneralBtn text="+ Añadir otra lista"/>
+                    <NewCardListForm/>
                 </div>
             </div>
         </Fragment>
