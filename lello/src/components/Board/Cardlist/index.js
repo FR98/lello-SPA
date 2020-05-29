@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom';
 import './styles.css'; 
 import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/cards';
+import * as cardListActions from '../../../actions/lists';
 
-import {GeneralBtn} from '../../Buttons'; 
 import Card from '../Card';
+import {
+    GeneralBtn,
+    DangerBtn,
+} from '../../Buttons';
 
 const Cardlist = ({ data, cards, isLoading, onLoad }) => {
     useEffect(onLoad, []);
@@ -20,9 +24,10 @@ const Cardlist = ({ data, cards, isLoading, onLoad }) => {
                     </label>
                 </div>
                 <div className="cardlist-hours">
-                    <label>
+                    <label className="label-cardlist-hours">
                         {data.hours_done} | {data.hours_estimated}
                     </label>
+                    <DangerBtn text={ "x" } action={ cardListActions.startRemovingList(data.id) } />
                 </div>
             </div>
             <div>
