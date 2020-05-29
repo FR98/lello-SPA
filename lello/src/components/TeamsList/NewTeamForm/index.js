@@ -1,52 +1,42 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 
-// import './styles.css'; 
-import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/teams';
-import ListItem from '../ListItem';
+import { SuccessBtn } from '../../Buttons';
 
 
-const NewTeamForm = ({ handleSubmit, isLoading }) => (
-    <form onSubmit={handleSubmit}>
+const RenderInput = ({ input, meta }) => (
+    <Fragment>
         {
-            !isLoading && (
-                <div className="div-display-column">
-                    <Field
-                        name='name'
-                        type='text'
-                        placeholder="New team name"
-                        component='input'
-                    />
-                    {/* <input
-                        value={ name }
-                        onChange={e => setName(e.target.value)}
-                        onKeyDown={
-                            e => {
-                                if (e.key === "Enter") {
-                                    onSubmit(name);
-                                    setName('');
-                                }
-                            }
-                        }
-                    /> */}
-                    {/* <SuccessBtn text={"Create team"} action={ actions.startAddingTeam({ name })} /> */}
-                    <button type="submit">
-                        {'Crear'}
-                    </button>
-                </div>
+            meta.dirty && meta.error && (
+                <strong className='error-text'>{ meta.error }</strong>
             )
         }
+        <input { ...input } />
+    </Fragment>
+);
+
+const NewTeamForm = ({ handleSubmit }) => (
+    <form onSubmit={ handleSubmit }>
+        <div className="div-display-column">
+            <Field
+                name='name'
+                type='text'
+                placeholder="New team name"
+                component={ RenderInput }
+            />
+            <SuccessBtn 
+                text={"Create team"}
+                type={'submit'}
+            />
+        </div>
     </form>
 );
 
 export default connect(
-    state => ({
-        isLoading: selectors.isFetchingTeams(state),
-    }),
+    state => ({}),
 )(
     reduxForm({
         form: 'addTeam',
@@ -57,6 +47,14 @@ export default connect(
                     name,
                 }),
             );
+            dispatch(reset('addTeam'));
         },
+        validate(values) {
+            const errors = {};
+            if (values.name && values.name.length < 5) {
+                errors.name = "El nombre es muy corto!";
+            }
+            return errors;
+        }
     })(NewTeamForm)
 );
