@@ -6,6 +6,7 @@ import './styles.css'; 
 
 import TeamsList from '../TeamsList';
 import {GeneralBtn} from '../Buttons';
+import BoardDescription from '../Board/BoardDescription';
 
 import * as selectors from '../../reducers';
 
@@ -25,7 +26,7 @@ const NavbarBoard = ({ data }) => {
                 <Link to={'${path}/calendar'}>
                     <GeneralBtn text="Calendario"/>
                 </Link>
-                <GeneralBtn text="Mostrar menú"/>
+                <BoardDescription/>
             </div>
         </div>
     );

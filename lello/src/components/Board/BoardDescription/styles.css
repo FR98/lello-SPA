@@ -1,0 +1,13 @@
+.descriptionBoard-container,
+.descriptionBoard-creators,
+.descriptionBoard-description {
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+.creators {
+    padding: 1rem;
+    background: #E4E4E4;
+    width: fit-content;
+}
