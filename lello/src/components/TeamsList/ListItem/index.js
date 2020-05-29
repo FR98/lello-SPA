@@ -14,7 +14,7 @@ import {
 const ListItem = ({ id, name, isConfirmed = false }) => (
     <tr className={"list-item " + (!isConfirmed ? 'pending' : '')}>
         <td>
-            <GeneralBtn text={ name } action={ actions.startFetchingBoards() } />
+            <GeneralBtn text={ name } action={ actions.startFetchingBoards(id) } />
         </td>
         <td>
             <DangerBtn text={ "x" } action={ teamsActions.startRemovingTeam(id) } />

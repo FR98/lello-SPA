@@ -48,8 +48,16 @@ export default connect(
         cards: selectors.getCards(state),
     }),
     dispatch => ({
+        onLoad(listId) {
+            dispatch(actions.startFetchingCards(listId));
+        }
+    }),
+    (stateProps, dispatchProps, ownProps) => ({
+        ...ownProps,
+        ...stateProps,
+        ...dispatchProps,
         onLoad() {
-            dispatch(actions.startFetchingCards());
+            dispatchProps.onLoad(ownProps.id);
         }
     }),
 )(Cardlist);

@@ -47,6 +47,7 @@ const order = (state = [], action) => {
     switch(action.type) {
         case types.FETCH_CARDS_COMPLETED: {
             return [
+                ...state,
                 ...action.payload.order,
             ]
         }
@@ -113,4 +114,4 @@ export default combineReducers({
 export const getCard = (state, id) => state.byId[id];
 export const getCards = state => state.order.map(id => getCard(state, id));
 export const isFetchingCards = state => state.isFetching;
-export const getFetchingCardsError = state => state.error;
+export const getCardsError = state => state.error;

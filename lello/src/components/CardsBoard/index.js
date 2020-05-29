@@ -1,16 +1,15 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { v4 as uuid } from 'uuid';
 
 import './styles.css'; 
 import * as selectors from '../../reducers';
 import * as actions from '../../actions/boards';
 
 import BoardCard from './BoardCard';
+import NewBoardForm from './NewBoardForm';
 
-const CardsBoard = ({ boards, isLoading, onLoad, onSubmit }) => {
-    useEffect(onLoad, []);
-    const [name, setName] = useState('');
+
+const CardsBoard = ({ boards, isLoading }) => {
     return (
         <div className='cards-board'>
             {
@@ -27,7 +26,7 @@ const CardsBoard = ({ boards, isLoading, onLoad, onSubmit }) => {
                 boards.length > 0 && !isLoading && (
                     <Fragment>
                         {
-                            boards.map(({ id }) => <BoardCard id={id} />)
+                            boards.map(({ id }) => <BoardCard key={id} id={id} />)
                         }
                     </Fragment>
                 )
@@ -35,28 +34,7 @@ const CardsBoard = ({ boards, isLoading, onLoad, onSubmit }) => {
             {
                 !isLoading && (
                     <div className="div-display-column board-card">
-                        <input
-                            type="text"
-                            placeholder="New board name"
-                            value={ name }
-                            onChange={e => setName(e.target.value)}
-                            onKeyDown={
-                                e => {
-                                    if (e.key === "Enter") {
-                                        onSubmit(name);
-                                        setName('');
-                                    }
-                                }
-                            }
-                        />
-                        <button type="submit" className="success-button" onClick={
-                            () => {
-                                onSubmit(name)
-                                setName('');
-                            }
-                        }>
-                            {'Enviar'}
-                        </button>
+                        <NewBoardForm />
                     </div>
                 )
             }
@@ -68,17 +46,5 @@ export default connect(
     state => ({
         boards: selectors.getBoards(state),
         isLoading: selectors.isFetchingBoards(state),
-    }),
-    dispatch => ({
-        onLoad() {
-            dispatch(actions.startFetchingBoards());
-        },
-        onSubmit(name, team) {
-            dispatch(actions.startAddingBoard({
-                id: uuid(),
-                name,
-                team,
-            }));
-        }
     }),
 )(CardsBoard);

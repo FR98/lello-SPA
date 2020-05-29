@@ -113,4 +113,4 @@ export default combineReducers({
 export const getTeam = (state, id) => state.byId[id];
 export const getTeams = state => state.order.map(id => getTeam(state, id));
 export const isFetchingTeams = state => state.isFetching;
-export const getFetchingTeamsError = state => state.error;
+export const getTeamsError = state => state.error;

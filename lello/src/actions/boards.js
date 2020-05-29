@@ -1,8 +1,11 @@
 import * as types from '../types/boards';
 
 
-export const startFetchingBoards = () => ({
+export const startFetchingBoards = teamId => ({
     type: types.FETCH_BOARDS_STARTED,
+    payload: {
+        teamId,
+    }
 });
 
 export const completeFetchingBoards = (entities, order) => ({

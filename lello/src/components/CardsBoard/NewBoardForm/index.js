@@ -3,21 +3,22 @@ import { connect } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { Field, reduxForm, reset } from 'redux-form';
 
-import * as actions from '../../../actions/teams';
+import * as actions from '../../../actions/boards';
 import { SuccessBtn } from '../../Buttons';
 import { RenderInput } from '../../FormFields';
 
-const NewTeamForm = ({ handleSubmit }) => (
+
+const NewBoardForm = ({ handleSubmit }) => (
     <form onSubmit={ handleSubmit }>
         <div className="div-display-column">
             <Field
                 name='name'
                 type='text'
-                placeholder="New team name"
+                placeholder="New board name"
                 component={ RenderInput }
             />
             <SuccessBtn 
-                text={"Create team"}
+                text={"Create board"}
                 type={'submit'}
             />
         </div>
@@ -28,15 +29,15 @@ export default connect(
     state => ({}),
 )(
     reduxForm({
-        form: 'addTeam',
+        form: 'addBoard',
         onSubmit({ name }, dispatch) {
             dispatch(
-                actions.startAddingTeam({
+                actions.startAddingBoard({
                     id: uuid(),
                     name,
                 }),
             );
-            dispatch(reset('addTeam'));
+            dispatch(reset('addBoard'));
         },
         validate(values) {
             const errors = {};
@@ -45,5 +46,5 @@ export default connect(
             }
             return errors;
         }
-    })(NewTeamForm)
+    })(NewBoardForm)
 );

@@ -7,7 +7,7 @@ import './styles.css';
 // General grey button ---
 const GeneralButton = ({ onClick=null, text, type }) => (
     <button 
-      className='general-button' 
+      className='general-button'
       onClick={ onClick }
       type={ type }
     >
@@ -43,7 +43,7 @@ export const GeneralBtn = connect(
 // Success green button ---
 const SuccessButton = ({ onClick=null, text, type }) => (
   <button 
-    className='success-button' 
+    className='success-button'
     onClick={ onClick }
     type={ type }
   >
@@ -79,7 +79,7 @@ export const SuccessBtn = connect(
 // Danger red button ---
 const DangerButton = ({ onClick=null, text, type }) => (
   <button 
-    className='danger-button' 
+    className='danger-button'
     onClick={ onClick }
     type={ type }
   >

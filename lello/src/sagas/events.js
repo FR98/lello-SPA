@@ -27,7 +27,7 @@ function* fetchEvents(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/events/`,
+                `${API_BASE_URL}/calendars/${action.payload.calendarId}/events/`,
                 {
                     method: 'GET',
                     headers:{

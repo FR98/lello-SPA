@@ -1,8 +1,11 @@
 import * as types from '../types/events';
 
 
-export const startFetchingEvents = () => ({
+export const startFetchingEvents = calendarId => ({
     type: types.FETCH_EVENTS_STARTED,
+    payload: {
+        calendarId,
+    }
 });
 
 export const completeFetchingEvents = (entities, order) => ({

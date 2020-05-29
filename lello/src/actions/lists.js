@@ -1,8 +1,11 @@
 import * as types from '../types/lists';
 
 
-export const startFetchingLists = () => ({
+export const startFetchingLists = boardId => ({
     type: types.FETCH_LISTS_STARTED,
+    payload: {
+        boardId,
+    }
 });
 
 export const completeFetchingLists = (entities, order) => ({
