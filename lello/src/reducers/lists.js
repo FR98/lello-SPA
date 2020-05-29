@@ -113,4 +113,4 @@ export default combineReducers({
 export const getList = (state, id) => state.byId[id];
 export const getLists = state => state.order.map(id => getList(state, id));
 export const isFetchingLists = state => state.isFetching;
-export const getFetchingListsError = state => state.error;
+export const getListsError = state => state.error;

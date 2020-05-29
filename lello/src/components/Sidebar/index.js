@@ -6,15 +6,12 @@ import './styles.css'; 
 import TeamsList from '../TeamsList';
 
 
-const Sidebar = ({ data }) => (
+const Sidebar = ({}) => (
     <div className="sidebar">
-        {console.log(data)}
         <TeamsList />
     </div>
 );
 
 export default connect(
-    state => ({
-        data: state,
-    })
+    state => ({})
 )(Sidebar);

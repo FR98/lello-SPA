@@ -128,4 +128,4 @@ export const getEventsOnDay = (state, date) => {
     return dayEvents;
 };
 export const isFetchingEvents = state => state.isFetching;
-export const getFetchingEventsError = state => state.error;
+export const getEventsError = state => state.error;

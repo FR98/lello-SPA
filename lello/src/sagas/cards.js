@@ -27,7 +27,7 @@ function* fetchCards(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/cards/`,
+                `${API_BASE_URL}/lists/${action.payload.listId}/cards/`,
                 {
                     method: 'GET',
                     headers:{

@@ -13,10 +13,8 @@ import Cardlist from '../../../Board/Cardlist';
 import OpenCard from '../../../Board/OpenCard';
 
 
-const Board = ({lists, isLoading, onLoad}) => {
+const Board = ({ lists, isLoading, onLoad }) => {
     useEffect(onLoad, []);
-    const { path, url } = useRouteMatch();
-    const { id } = useParams();
     return(
         <Fragment>
             <Navbar />
@@ -55,8 +53,16 @@ export default connect(
         isLoading: selectors.isFetchingLists(state),
     }),
     dispatch => ({
+        onLoad(boardId) {
+            dispatch(actions.startFetchingLists(boardId));
+        }
+    }),
+    (stateProps, dispatchProps, ownProps) => ({
+        ...ownProps,
+        ...stateProps,
+        ...dispatchProps,
         onLoad() {
-            dispatch(actions.startFetchingLists());
+            dispatchProps.onLoad(ownProps.match.params.id);
         }
     }),
 )(Board);

@@ -27,7 +27,7 @@ function* fetchLists(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/lists/`,
+                `${API_BASE_URL}/boards/${action.payload.boardId}/lists/`,
                 {
                     method: 'GET',
                     headers:{
