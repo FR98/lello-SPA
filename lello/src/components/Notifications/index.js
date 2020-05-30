@@ -2,13 +2,12 @@ import React from "react";
 import { connect } from 'react-redux';
 import Popup from "reactjs-popup";
 
-import * as selectors from '../../../reducers';
 import './styles.css'; 
-import NotificationIcon from '@material-ui/icons/notifications_none';
+import AccessAlarmIcon from '@material-ui/icons/NotificationsNone';
 
 const Notifications = () => {
     return(
-        <Popup trigger={<NotificacionIcon />} position="bottom center">
+        <Popup trigger={<AccessAlarmIcon className="iconNot" fontSize="large"/>} position="bottom center">
         {close => (
             <div className="notifications-container">
         
@@ -28,8 +27,4 @@ const Notifications = () => {
     );
 }
   
-export default connect(
-    (state, {id}) => ({
-        data: selectors.getBoard(state, id),
-    })
-)(Notifications);
+export default (Notifications);
