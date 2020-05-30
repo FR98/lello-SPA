@@ -12,7 +12,7 @@ const NewCardForm = ({ handleSubmit }) => (
     <form onSubmit={ handleSubmit }>
         <div className="div-display-column">
             <Field
-                name='name'
+                name='title'
                 type='text'
                 placeholder="Nombre de la nueva tarjeta"
                 component={ RenderInput }
@@ -26,28 +26,32 @@ const NewCardForm = ({ handleSubmit }) => (
 );
 
 export default connect(
-    state => ({
-        listId: selectors.getSelectedList(state),
+    (state, { listId }) => ({
+        listId: listId,
+        boardId: selectors.getSelectedBoard(state),
     }),
 )(
     reduxForm({
         form: 'addCard',
-        onSubmit({ name }, dispatch, { listId }) {
+        onSubmit({ title }, dispatch, { listId, boardId }) {
             dispatch(
                 actions.startAddingCard({
                     id: uuid(),
-                    name,
-                    listId
+                    title,
+                    lista: listId,
+                    hours_estimated: 0,
+                    hours_done: 0,
+                    assigned_to: []
                 }),
             );
             dispatch(reset('addCard'));
         },
         validate(values) {
             const errors = {};
-            if (values.name && values.name.length > 15) {
-                errors.name = "¡El nombre es muy largo!";
-            } else if (values.name && values.name.length < 2){
-                errors.name = "¡El nombre es muy corto!";
+            if (values.title && values.title.length > 15) {
+                errors.title = "¡El nombre es muy largo!";
+            } else if (values.title && values.title.length < 2){
+                errors.title = "¡El nombre es muy corto!";
             }
             return errors;
         }
