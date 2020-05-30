@@ -8,6 +8,7 @@ import * as actions from '../../../actions/cards';
 import * as cardListActions from '../../../actions/lists';
 
 import Card from '../Card';
+import NewCardForm from '../../Board/NewCardForm'
 import {
     GeneralBtn,
     DangerBtn,
@@ -42,7 +43,7 @@ const Cardlist = ({ data, cards, isLoading, onLoad }) => {
                     )
                 }
             </div>
-            <GeneralBtn text="+ Añadir otra tarjeta"/>
+            <NewCardForm/>
         </div>
     );
 }

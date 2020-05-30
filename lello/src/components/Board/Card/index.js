@@ -33,7 +33,7 @@ const Card = ({ data }) => {
                     </label>
                     <label>
                         {
-                            data.assigned_to.length === 0 && (
+                            data.assigned_to && data.assigned_to.length === 0 && (
                                 <p>{ '' }</p>
                             )
                         }
