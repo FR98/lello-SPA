@@ -7,7 +7,7 @@ import './styles.css'; 
 
 import * as selectors from '../../../reducers';
 
-import {GeneralBtn} from '../../Buttons';
+import { GeneralBtn } from '../../Buttons';
 
 const Card = ({ data }) => {
     const { path, url } = useRouteMatch();

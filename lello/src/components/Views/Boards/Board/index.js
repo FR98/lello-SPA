@@ -6,7 +6,7 @@ import './styles.css'; 
 import * as selectors from '../../../../reducers';
 import * as actions from '../../../../actions/lists';
 
-import {GeneralBtn} from '../../../Buttons'; 
+import { GeneralBtn } from '../../../Buttons'; 
 import Navbar from '../../../Navbar';
 import NavbarBoard from '../../../NavbarBoard';
 import Cardlist from '../../../Board/Cardlist';

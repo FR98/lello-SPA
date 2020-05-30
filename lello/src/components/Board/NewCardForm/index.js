@@ -4,7 +4,6 @@ import { v4 as uuid } from 'uuid';
 import { Field, reduxForm, reset } from 'redux-form';
 
 import * as actions from '../../../actions/cards';
-import * as listActions from '../../../actions/lists';
 import * as selectors from '../../../reducers';
 import { GeneralBtn } from '../../Buttons';
 import { RenderInput } from '../../FormFields';
@@ -46,7 +45,6 @@ export default connect(
                 }),
             );
             dispatch(reset('addCard'));
-            // dispatch(listActions.startFetchingLists(boardId))
         },
         validate(values) {
             const errors = {};
