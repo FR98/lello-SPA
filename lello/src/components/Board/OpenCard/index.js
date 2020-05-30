@@ -1,7 +1,8 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import moment from 'moment';
+import Popup from "reactjs-popup";
 
 import './styles.css'; 
 import * as selectors from '../../../reducers';
@@ -10,10 +11,14 @@ import * as actions from '../../../actions/cards';
 import {GeneralBtn} from '../../Buttons';
 
 // TODO: REVISAR; NO SE PUEDE HACER REFRESH
-const OpenCard = ({ state, onLoad }) => {
-    useEffect(onLoad, [])
+const OpenCard = ({ state }) => {
     const { cardid, id } = useParams();
     const data = selectors.getCard(state, cardid);
+
+    const [disabled, setDisabled] = useState(false);
+    function handleClick(){
+        setDisabled(!disabled);
+    }
     return(
         <div className="all-container">
             <div className="openCard-container">
@@ -86,7 +91,9 @@ const OpenCard = ({ state, onLoad }) => {
                             <label>
                                 DESCRIPCIÓN
                             </label>
-                            <label className="openCard-content">{data.description}</label>
+                            <textarea disabled={disabled} className="openCard-content" placeholder="Colocar descripcion aqui">{data.description}</textarea>
+                                    <button type="submit" onClick={handleClick}>{disabled ? "Editar": "Guardar"}</button>
+
                         </div>
                     </div>
                     <div className="openCard-buttons">
@@ -105,10 +112,5 @@ const OpenCard = ({ state, onLoad }) => {
 export default connect(
     state => ({
         state: state,
-    }),
-    dispatch => ({
-        onLoad() {
-            dispatch(actions.startFetchingCards());
-        }
     })
 )(OpenCard);
