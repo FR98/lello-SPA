@@ -40,10 +40,10 @@ function* fetchLists(action) {
             if (http.isSuccessful(response.status)) {
                 const jsonResult = yield response.json();
                 const {
-                    entities: { lists },
+                    entities,
                     result,
                 } = normalize(jsonResult, schemas.lists);
-                yield put(actions.completeFetchingLists(lists, result));
+                yield put(actions.completeFetchingLists(entities, result));
             } else {
                 const { non_field_errors } = yield response.json();
                 yield put(actions.failFetchingLists(non_field_errors[0]));

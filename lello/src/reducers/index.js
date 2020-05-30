@@ -55,10 +55,18 @@ export const isFetchingLists = state => listsSelectors.isFetchingLists(state.lis
 export const getListsError = state => listsSelectors.getListsError(state.lists);
 
 export const getCard = (state, id) => cardsSelectors.getCard(state.cards, id);
-export const getCards = state => cardsSelectors.getCards(state.cards);
+export const getCards = (state, listId) => cardsSelectors.getCards(state.cards, listId);
 export const isFetchingCards = state => cardsSelectors.isFetchingCards(state.cards);
 export const getCardsError = state =>  cardsSelectors.getCardsError(state.cards);
 
 export const getSelectedTeam = state => selectsSelectors.getSelectedTeam(state.selects);
 export const getSelectedBoard = state => selectsSelectors.getSelectedBoard(state.selects);
 export const getSelectedList = state => selectsSelectors.getSelectedList(state.selects);
+
+
+export const getListCards = (state, id) => {
+    const list = listsSelectors.getList(state.lists, id);
+    const cards = [];
+    list.card_set.map(id => cards.push(cardsSelectors.getCard(state.cards, id)));
+    return cards;
+};

@@ -14,8 +14,7 @@ import {
     DangerBtn,
 } from '../../Buttons';
 
-const Cardlist = ({ data, cards, isLoading, onLoad }) => {
-    useEffect(onLoad, []);
+const Cardlist = ({ data, cards = [], isLoading }) => {
     return (
         <div className="cardlist-container">
             <div className="header-cardlist">
@@ -51,19 +50,6 @@ const Cardlist = ({ data, cards, isLoading, onLoad }) => {
 export default connect(
     (state, {id}) => ({
         data: selectors.getList(state, id),
-        cards: selectors.getCards(state),
-    }),
-    dispatch => ({
-        onLoad(listId) {
-            dispatch(actions.startFetchingCards(listId));
-        }
-    }),
-    (stateProps, dispatchProps, ownProps) => ({
-        ...ownProps,
-        ...stateProps,
-        ...dispatchProps,
-        onLoad() {
-            dispatchProps.onLoad(ownProps.id);
-        }
-    }),
+        cards: selectors.getListCards(state, id),
+    })
 )(Cardlist);
