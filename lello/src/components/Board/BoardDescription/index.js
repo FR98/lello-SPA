@@ -16,7 +16,7 @@ const BoardDescription = ({ data }) => {
                 </a>
                 <div className="descriptionBoard-creators">
                     <h2>Creado por</h2>
-                    <label className="creators">{data.owner}</label>
+                    <label className="creators">{data.owner.username}</label>
                 </div>
                 <div className="descriptionBoard-description">
                     <h2>Descripción</h2>
