@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { Field, reduxForm, reset } from 'redux-form';
 
 import * as actions from '../../../actions/lists';
+import * as selectors from '../../../reducers';
 import { GeneralBtn } from '../../Buttons';
 import { RenderInput } from '../../FormFields';
 
@@ -25,15 +26,20 @@ const NewCardListForm = ({ handleSubmit }) => (
 );
 
 export default connect(
-    state => ({}),
+    state => ({
+        boardId: selectors.getSelectedBoard(state),
+    }),
 )(
     reduxForm({
         form: 'addList',
-        onSubmit({ name }, dispatch) {
+        onSubmit({ name }, dispatch, { boardId }) {
             dispatch(
                 actions.startAddingList({
                     id: uuid(),
                     name,
+                    board: boardId,
+                    hours_estimated: 0.0,
+                    hours_done: 0.0
                 }),
             );
             dispatch(reset('addList'));
