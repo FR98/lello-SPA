@@ -16,14 +16,17 @@ const GeneralButton = ({ onClick=null, text, type }) => (
 );
 
 export const GeneralBtn = connect(
-    (state, { text, action }) => ({
+    (state, { text, action, actions }) => ({
       text: text,
       action: action,
+      actions: actions,
     }),
     dispatch => ({
-        onClick(action) {
+        onClick(action, actions) {
             if (action) {
               dispatch(action);
+            } else if (actions) {
+              actions.map(action => dispatch(action));
             } else {
               console.log("This button do nothing");
             };
@@ -34,7 +37,7 @@ export const GeneralBtn = connect(
       ...stateProps,
       ...dispatchProps,
       onClick() {
-        dispatchProps.onClick(stateProps.action)
+        dispatchProps.onClick(stateProps.action, stateProps.actions);
       },
     }),
 )(GeneralButton);
@@ -52,14 +55,17 @@ const SuccessButton = ({ onClick=null, text, type }) => (
 );
 
 export const SuccessBtn = connect(
-  (state, { text, action }) => ({
+  (state, { text, action, actions }) => ({
     text: text,
     action: action,
+    actions: actions,
   }),
   dispatch => ({
-      onClick(action) {
+      onClick(action, actions) {
           if (action) {
             dispatch(action);
+          } else if (actions) {
+            actions.map(action => dispatch(action));
           } else {
             console.log("This button do nothing");
           };
@@ -70,7 +76,7 @@ export const SuccessBtn = connect(
     ...stateProps,
     ...dispatchProps,
     onClick() {
-      dispatchProps.onClick(stateProps.action)
+      dispatchProps.onClick(stateProps.action, stateProps.actions);
     },
   }),
 )(SuccessButton);
@@ -88,14 +94,17 @@ const DangerButton = ({ onClick=null, text, type }) => (
 );
 
 export const DangerBtn = connect(
-  (state, { text, action }) => ({
+  (state, { text, action, actions }) => ({
     text: text,
     action: action,
+    actions: actions,
   }),
   dispatch => ({
-      onClick(action) {
+      onClick(action, actions) {
           if (action) {
             dispatch(action);
+          } else if (actions) {
+            actions.map(action => dispatch(action));
           } else {
             console.log("This button do nothing");
           };
@@ -106,7 +115,7 @@ export const DangerBtn = connect(
     ...stateProps,
     ...dispatchProps,
     onClick() {
-      dispatchProps.onClick(stateProps.action)
+      dispatchProps.onClick(stateProps.action, stateProps.actions);
     },
   }),
 )(DangerButton);

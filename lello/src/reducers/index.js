@@ -7,6 +7,7 @@ import boards, * as boardsSelectors from './boards';
 import events, * as eventsSelectors from './events';
 import lists, * as listsSelectors from './lists';
 import cards, * as cardsSelectors from './cards';
+import selects, * as selectsSelectors from './selects';
 
 const reducer = combineReducers({
     auth,
@@ -15,6 +16,7 @@ const reducer = combineReducers({
     events,
     lists,
     cards,
+    selects,
     form: formReducer,
 });
 
@@ -57,3 +59,6 @@ export const getCards = state => cardsSelectors.getCards(state.cards);
 export const isFetchingCards = state => cardsSelectors.isFetchingCards(state.cards);
 export const getCardsError = state =>  cardsSelectors.getCardsError(state.cards);
 
+export const getSelectedTeam = state => selectsSelectors.getSelectedTeam(state.selects);
+export const getSelectedBoard = state => selectsSelectors.getSelectedBoard(state.selects);
+export const getSelectedList = state => selectsSelectors.getSelectedList(state.selects);

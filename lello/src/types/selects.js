@@ -1,0 +1,4 @@
+
+export const TEAM_SELECTED = 'TEAM_SELECTED';
+export const BOARD_SELECTED = 'BOARD_SELECTED';
+export const LIST_SELECTED = 'LIST_SELECTED';
