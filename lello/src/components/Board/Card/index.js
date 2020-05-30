@@ -50,7 +50,7 @@ const Card = ({ data }) => {
 }
 
 export default connect(
-    (state, {id}) => ({
+    (state, { id }) => ({
         data: selectors.getCard(state, id),
     })
 )(Card);

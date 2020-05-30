@@ -39,7 +39,8 @@ export default connect(
                     name,
                     board: boardId,
                     hours_estimated: 0.0,
-                    hours_done: 0.0
+                    hours_done: 0.0,
+                    card_set: []
                 }),
             );
             dispatch(reset('addList'));
