@@ -8,10 +8,11 @@ export const startFetchingLists = boardId => ({
     }
 });
 
-export const completeFetchingLists = (entities, order) => ({
+export const completeFetchingLists = ({ lists, cards }, order) => ({
     type: types.FETCH_LISTS_COMPLETED,
     payload: {
-        entities,
+        lists,
+        cards,
         order,
     },
 });

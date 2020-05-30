@@ -35,7 +35,7 @@ const Board = ({ lists, isLoading, onLoad }) => {
                         }
                         {
                             lists.length > 0 && !isLoading && (
-                                lists.map(({ id }) => <Cardlist key={id} id={id} />)        
+                                lists.map(({ id }) => <Cardlist key={ id } id={ id } />)
                             )
                         }
                     </div>

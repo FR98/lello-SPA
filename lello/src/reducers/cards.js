@@ -2,16 +2,18 @@ import { combineReducers } from 'redux';
 import omit from 'lodash/omit';
 
 import * as types from '../types/cards';
+import * as listsTypes from '../types/lists';
+import actions from 'redux-form/lib/actions';
 
 
 const byId = (state = {}, action) => {
     switch(action.type) {
-        case types.FETCH_CARDS_COMPLETED: {
+        case listsTypes.FETCH_LISTS_COMPLETED: {
             const newState = { ...state };
-            const { entities, order } = action.payload;
+            const { cards, order } = action.payload;
             order.forEach(id => {
                 newState[id] = {
-                    ...entities[id],
+                    ...cards[id],
                     isConfirmed: true,
                 };
             });
@@ -46,9 +48,11 @@ const byId = (state = {}, action) => {
 const order = (state = [], action) => {
     switch(action.type) {
         case types.FETCH_CARDS_COMPLETED: {
-            return [
-                ...action.payload.order,
-            ]
+            const newState = [ ...state ];
+            action.payload.order.map(id => {
+                !(id in newState) && newState.push(id);
+            });
+            return newState;
         }
         case types.ADD_CARD_STARTED: {
             return [...state, action.payload.id]
@@ -111,6 +115,13 @@ export default combineReducers({
 });
 
 export const getCard = (state, id) => state.byId[id];
-export const getCards = state => state.order.map(id => getCard(state, id));
+export const getCards = (state, listId) => {
+    const cards = [];
+    state.order.forEach(id => {
+        const card = getCard(state, id);
+        card.lista === listId && cards.push(card);
+    });
+    return cards;
+};
 export const isFetchingCards = state => state.isFetching;
 export const getCardsError = state => state.error;

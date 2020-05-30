@@ -8,10 +8,10 @@ const byId = (state = {}, action) => {
     switch(action.type) {
         case types.FETCH_LISTS_COMPLETED: {
             const newState = { ...state };
-            const { entities, order } = action.payload;
+            const { lists, order } = action.payload;
             order.forEach(id => {
                 newState[id] = {
-                    ...entities[id],
+                    ...lists[id],
                     isConfirmed: true,
                 };
             });
