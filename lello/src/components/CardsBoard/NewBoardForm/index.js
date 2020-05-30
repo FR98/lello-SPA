@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { Field, reduxForm, reset } from 'redux-form';
 
 import * as actions from '../../../actions/boards';
+import * as selectors from '../../../reducers';
 import { SuccessBtn } from '../../Buttons';
 import { RenderInput } from '../../FormFields';
 
@@ -26,15 +27,20 @@ const NewBoardForm = ({ handleSubmit }) => (
 );
 
 export default connect(
-    state => ({}),
+    state => ({
+        teamId: selectors.getSelectedTeam(state),
+        userId: selectors.getAuthUserID(state),
+    }),
 )(
     reduxForm({
         form: 'addBoard',
-        onSubmit({ name }, dispatch) {
+        onSubmit({ name }, dispatch, { teamId, userId }) {
             dispatch(
                 actions.startAddingBoard({
                     id: uuid(),
                     name,
+                    team: teamId,
+                    owner: userId,
                 }),
             );
             dispatch(reset('addBoard'));

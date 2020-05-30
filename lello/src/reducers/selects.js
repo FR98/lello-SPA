@@ -44,6 +44,6 @@ export default combineReducers({
 });
 
 
-export const getSelectedTeam = state => state;
-export const getSelectedBoard = state => state;
-export const getSelectedList = state => state;
+export const getSelectedTeam = state => state.selectedTeam;
+export const getSelectedBoard = state => state.selectedBoard;
+export const getSelectedList = state => state.selectedList;
