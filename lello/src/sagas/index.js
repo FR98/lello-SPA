@@ -39,6 +39,10 @@ import {
   watchFetchAudits,
 } from './audits';
 
+import {
+  watchFetchNotifications,
+} from './notifications';
+
 
 function* mainSaga() {
   yield all([
@@ -60,6 +64,7 @@ function* mainSaga() {
     fork(watchAddCard),
     fork(watchRemoveCard),
     fork(watchFetchAudits),
+    fork(watchFetchNotifications),
   ]);
 }
 

@@ -9,6 +9,7 @@ import lists, * as listsSelectors from './lists';
 import cards, * as cardsSelectors from './cards';
 import selects, * as selectsSelectors from './selects';
 import audits, * as auditsSelectors from './audits';
+import notifications, * as notificationsSelectors from './notifications';
 
 const reducer = combineReducers({
     auth,
@@ -19,6 +20,7 @@ const reducer = combineReducers({
     cards,
     selects,
     audits,
+    notifications,
     form: formReducer,
 });
 
@@ -69,6 +71,11 @@ export const getAudit = (state, id) => auditsSelectors.getAudit(state.audits, id
 export const getAudits = state => auditsSelectors.getAudits(state.audits);
 export const isFetchingAudits = state => auditsSelectors.isFetchingAudits(state.audits);
 export const getAuditsError = state => auditsSelectors.getAuditsError(state.audits);
+
+export const getNotification = (state, id) => notificationsSelectors.getNotification(state.notifications, id);
+export const getNotifications = state => notificationsSelectors.getNotifications(state.notifications);
+export const isFetchingNotifications = state => notificationsSelectors.isFetchingNotifications(state.notifications);
+export const getNotificationsError = state => notificationsSelectors.getNotificationsError(state.notifications);
 
 
 export const getListCardsIds = (state, id) => {

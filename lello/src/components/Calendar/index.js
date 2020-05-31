@@ -43,7 +43,6 @@ export default connect(
         ...dispatchProps,
         onLoad() {
             dispatchProps.onLoad(stateProps.boardId);
-            console.log("adfa", stateProps)
         }
     }),
 )(Calendar);
