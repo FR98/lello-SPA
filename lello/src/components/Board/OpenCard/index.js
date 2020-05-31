@@ -8,17 +8,18 @@ import './styles.css'; 
 import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/cards';
 
-import {GeneralBtn} from '../../Buttons';
+import { GeneralBtn } from '../../Buttons';
 
 // TODO: REVISAR; NO SE PUEDE HACER REFRESH
 const OpenCard = ({ state }) => {
     const { cardid, id } = useParams();
     const data = selectors.getCard(state, cardid);
 
-    const [disabled, setDisabled] = useState(false);
-    function handleClick(){
+    const [disabled, setDisabled] = useState(true);
+    function handleClick() {
         setDisabled(!disabled);
     }
+
     return(
         <div className="all-container">
             <div className="openCard-container">
@@ -47,7 +48,7 @@ const OpenCard = ({ state }) => {
                                 }
                                 {
                                     data.assigned_to.length > 0  && (
-                                        data.assigned_to.map(({ member_id }) => <div>member_id</div>)        
+                                        data.assigned_to.map(member_id => <div>{ selectors.getUser(state, member_id).username }</div>)
                                     )
                                 }
                                 </label>
@@ -92,8 +93,7 @@ const OpenCard = ({ state }) => {
                                 DESCRIPCIÓN
                             </label>
                             <textarea disabled={disabled} className="openCard-content" placeholder="Colocar descripcion aqui">{data.description}</textarea>
-                                    <button type="submit" onClick={handleClick}>{disabled ? "Editar": "Guardar"}</button>
-
+                            <button type="submit" onClick={handleClick}>{disabled ? "Editar": "Guardar"}</button>
                         </div>
                     </div>
                     <div className="openCard-buttons">

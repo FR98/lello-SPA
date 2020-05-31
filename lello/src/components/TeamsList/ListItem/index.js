@@ -6,6 +6,7 @@ import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/boards';
 import * as selectActions from '../../../actions/selects';
 import * as teamsActions from '../../../actions/teams';
+import * as usersActions from '../../../actions/users';
 
 import {
     GeneralBtn,
@@ -18,6 +19,7 @@ const ListItem = ({ id, name, isConfirmed = false }) => (
             <GeneralBtn text={ name } actions={ [
                 selectActions.selectTeam(id),
                 actions.startFetchingBoards(id),
+                usersActions.startFetchingUsers(id)
             ] } />
         </td>
         <td>
