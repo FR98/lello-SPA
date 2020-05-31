@@ -23,8 +23,8 @@ const NavbarBoard = ({ data, boardId }) => {
                 <GeneralBtn text="Público"/>
             </div>
             <div className="navbarBoard-rigth">
-                <Link to={'${path}/calendar'}>
-                    <GeneralBtn text="Calendario"/>
+                <Link to={`${path}/calendar`}>
+                    <GeneralBtn text="Calendario" /> 
                 </Link>
                 <BoardDescription id={boardId}/>
             </div>
