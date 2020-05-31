@@ -23,8 +23,8 @@ const BoardDescription = ({ data, audits, onLoad, isLoading }) => {
                     <h2>Descripción</h2>
                     <textarea className= "creators" placeholder="Descripcion del tablero">{data.descriptiom}</textarea>
                 </div>
+                <h2>Actividad</h2>
                 <div className="descriptionBoard-audits">
-                    <h2>Actividad</h2>
                     {
                         audits.length === 0 && !isLoading && (
                             <p>{ 'No hay' }</p>
@@ -42,12 +42,12 @@ const BoardDescription = ({ data, audits, onLoad, isLoading }) => {
                     }
                     {
                         audits.length > 0 && !isLoading && (
-                            <table>
+                            <table className="table-audits">
                                 <thead>
                                     <tr>
-                                        <th>Fecha</th>
-                                        <th>Método</th>
-                                        <th>Url</th>
+                                        <th className="th-td-audits">Fecha</th>
+                                        <th className="th-td-audits">Método</th>
+                                        <th className="th-td-audits">Url</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,9 +55,9 @@ const BoardDescription = ({ data, audits, onLoad, isLoading }) => {
                                         audits.map(audit => {
                                             return(
                                                 <tr key={audit.id}>
-                                                    <td>{audit.created_at}</td>
-                                                    <td>{audit.httpMethod}</td>
-                                                    <td>{audit.url}</td>
+                                                    <td className="th-td-audits">{audit.created_at}</td>
+                                                    <td className="th-td-audits">{audit.httpMethod}</td>
+                                                    <td className="th-td-audits">{audit.url}</td>
                                                 </tr>
                                                 )
                                         })
