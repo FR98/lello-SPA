@@ -1,15 +1,21 @@
-import React from "react";
+import React, {useEffect, Fragment} from "react";
 import { connect } from 'react-redux';
 import Popup from "reactjs-popup";
+
+import * as selectors from '../../reducers';
+import * as actions from '../../actions/notifications';
 
 import './styles.css'; 
 import AccessAlarmIcon from '@material-ui/icons/NotificationsNone';
 
-const Notifications = () => {
+const Notifications = ({ data, allNotifications, onLoad }) => {
+    useEffect(onLoad, []);
     return(
         <Popup trigger={<AccessAlarmIcon className="iconNot" fontSize="large"/>} position="bottom center">
         {close => (
             <div className="notifications-container">
+                {console.log("hola", data)}
+                {console.log("adios", allNotifications)}
         
                 <a className="close" onClick={close}>
                     &times;
@@ -19,7 +25,16 @@ const Notifications = () => {
                     <h2>Notificaciones</h2>
                 </div>
                 <div className="notifications-items">
-                    <label>Notificacion 1</label>
+                    {
+                        allNotifications.map(notification => {
+                            return(
+                                <div key={notification.id} className="notifications-onebyone">
+                                    <strong><label>{notification.title}</label></strong>
+                                    <label>{notification.description}</label>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
         )}
@@ -27,4 +42,14 @@ const Notifications = () => {
     );
 }
   
-export default (Notifications);
+export default connect(
+    state => ({
+        data: selectors.getAuthUserID(state),
+        allNotifications: selectors.getNotifications(state)
+    }),
+    dispatch => ({
+        onLoad() {
+            dispatch(actions.startFetchingNotifications());
+        }
+    }),
+)(Notifications);
