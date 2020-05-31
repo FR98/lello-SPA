@@ -37,8 +37,6 @@ import {
 
 import {
   watchFetchAudits,
-  watchAddAudit,
-  watchRemoveAudit,
 } from './audits';
 
 
@@ -62,8 +60,6 @@ function* mainSaga() {
     fork(watchAddCard),
     fork(watchRemoveCard),
     fork(watchFetchAudits),
-    fork(watchAddAudit),
-    fork(watchRemoveAudit),
   ]);
 }
 

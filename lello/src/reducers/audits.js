@@ -17,26 +17,6 @@ const byId = (state = {}, action) => {
             });
             return newState;
         }
-        case types.ADD_AUDIT_STARTED: {
-            const newState = { ...state };
-            newState[action.payload.id] = {
-                ...action.payload,
-                isConfirmed: false,
-            };
-            return newState;
-        }
-        case types.ADD_AUDIT_COMPLETED: {
-            const { tempId, Audit } = action.payload;
-            const newState = omit(state, tempId);
-            newState[Audit.id] = {
-                ...Audit,
-                isConfirmed: true,
-            };
-            return newState;
-        }
-        case types.REMOVE_AUDIT_STARTED: {
-            return omit(state, action.payload.id);
-        }
         default: {
             return state;
         }
@@ -49,16 +29,6 @@ const order = (state = [], action) => {
             return [
                 ...action.payload.order,
             ]
-        }
-        case types.ADD_AUDIT_STARTED: {
-            return [...state, action.payload.id]
-        }
-        case types.ADD_AUDIT_COMPLETED: {
-            const { tempId, Audit } = action.payload;
-            return state.map(id => id === tempId ? Audit.id : id);
-        }
-        case types.REMOVE_AUDIT_STARTED: {
-            return state.filter(id => id !== action.payload.id);
         }
         default: {
             return state;
@@ -86,15 +56,9 @@ const isFetching = (state = false, action) => {
 const error = (state = null, action) => {
     switch(action.type) {
         case types.FETCH_AUDITS_STARTED:
-        case types.ADD_AUDIT_STARTED:
-        case types.REMOVE_AUDIT_STARTED:
         case types.FETCH_AUDITS_COMPLETED:
-        case types.ADD_AUDIT_COMPLETED:
-        case types.REMOVE_AUDIT_COMPLETED:
             return null;
         case types.FETCH_AUDITS_FAILED:
-        case types.ADD_AUDIT_FAILED:
-        case types.REMOVE_AUDIT_FAILED:
             return action.payload.error;
         default: {
             return state;
