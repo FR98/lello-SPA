@@ -12,6 +12,7 @@ import { normalize } from 'normalizr';
 import * as http from '../utils/http';
 import * as selectors from '../reducers';
 import * as actions from '../actions/cards';
+import * as listsActions from '../actions/lists';
 import * as types from '../types/cards';
 import * as schemas from '../schemas/cards';
 import {
@@ -88,6 +89,7 @@ function* addCard(action) {
                         jsonResult,
                     )
                 );
+                // yield put(listsActions.startRefreshingList(action.payload.lista));
             } else {
                 const { non_field_errors } = yield response.json();
                 yield put(actions.failAddingCard(non_field_errors[0]));
