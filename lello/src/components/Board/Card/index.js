@@ -11,8 +11,8 @@ import { GeneralBtn } from '../../Buttons';
 
 const Card = ({ state, data }) => {
     const { path, url } = useRouteMatch();
-    return(
-        <Link to={`${path}/cards/${data.id}`}>
+    return (
+        <Link to={`${url}/cards/${data.id}`}>
             <div className="card-container">
                 <div className="card-superiorContainer">
                     <label className="card-title">
