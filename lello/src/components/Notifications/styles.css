@@ -1,3 +1,15 @@
 .iconNot {
     color: black;
 }
+
+.notifications-container {
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+.notifications-items {
+    border-radius: 0.25rem;
+    border: solid 1px black;
+    padding: 1rem 0rem 1rem 0rem;
+}
