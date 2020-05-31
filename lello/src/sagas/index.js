@@ -6,6 +6,11 @@ import {
 } from './auth';
 
 import {
+  watchFetchUsers,
+  watchAddUser,
+} from './users';
+
+import {
   watchFetchTeams,
   watchAddTeam,
   watchRemoveTeam,
@@ -48,6 +53,8 @@ function* mainSaga() {
   yield all([
     fork(watchLoginStarted),
     fork(watchRefreshTokenStarted),
+    fork(watchFetchUsers),
+    fork(watchAddUser),
     fork(watchFetchTeams),
     fork(watchAddTeam),
     fork(watchRemoveTeam),

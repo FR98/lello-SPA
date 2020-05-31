@@ -27,7 +27,7 @@ function* fetchBoards(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/teams/${action.payload.teamId}/boards`,
+                `${API_BASE_URL}/teams/${action.payload.teamId}/boards/`,
                 {
                     method: 'GET',
                     headers:{

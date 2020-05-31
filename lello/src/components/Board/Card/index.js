@@ -9,7 +9,7 @@ import * as selectors from '../../../reducers';
 
 import { GeneralBtn } from '../../Buttons';
 
-const Card = ({ data }) => {
+const Card = ({ state, data }) => {
     const { path, url } = useRouteMatch();
     return(
         <Link to={`${path}/cards/${data.id}`}>
@@ -19,7 +19,10 @@ const Card = ({ data }) => {
                         {data.title}
                     </label>
                     <label>
-                        #{data.number}
+                        {data.hours_done} | {data.hours_estimated}
+                    </label>
+                    <label>
+                        #{data.id}
                     </label>
                 </div>
                 <div className="card-inferiorContainer">
@@ -29,9 +32,6 @@ const Card = ({ data }) => {
                         }
                     </label>
                     <label>
-                        {data.hours_done} | {data.hours_estimated}
-                    </label>
-                    <label>
                         {
                             data.assigned_to.length === 0 && (
                                 <p>{ '' }</p>
@@ -39,7 +39,7 @@ const Card = ({ data }) => {
                         }
                         {
                             data.assigned_to.length > 0  && (
-                                data.assigned_to.map(({ member_id }) => <div>member_id</div>)        
+                                data.assigned_to.map(member_id => <div>{ selectors.getUser(state, member_id).username }</div>)
                             )
                         }
                     </label>
@@ -51,6 +51,7 @@ const Card = ({ data }) => {
 
 export default connect(
     (state, { id }) => ({
+        state,
         data: selectors.getCard(state, id),
     })
 )(Card);

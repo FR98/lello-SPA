@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 import auth, * as authSelectors from './auth';
+import users, * as usersSelectors from './users';
 import teams, * as teamsSelectors from './teams';
 import boards, * as boardsSelectors from './boards';
 import events, * as eventsSelectors from './events';
@@ -13,6 +14,7 @@ import notifications, * as notificationsSelectors from './notifications';
 
 const reducer = combineReducers({
     auth,
+    users,
     teams,
     boards,
     events,
@@ -35,6 +37,11 @@ export const getAuthExpiration = state => authSelectors.getAuthExpiration(state.
 export const getAuthUsername = state => authSelectors.getAuthUsername(state.auth);
 export const getIsRefreshingToken = state => authSelectors.getIsRefreshingToken(state.auth);
 export const getRefreshingError = state => authSelectors.getRefreshingError(state.auth);
+
+export const getUser = (state, id) => usersSelectors.getUser(state.users, id);
+export const getUsers = state => usersSelectors.getUsers(state.users);
+export const isFetchingUsers = state => usersSelectors.isFetchingUsers(state.users);
+export const getUsersError = state => usersSelectors.getUsersError(state.users);
 
 export const getTeam = (state, id) => teamsSelectors.getTeam(state.teams, id);
 export const getTeams = state => teamsSelectors.getTeams(state.teams);
