@@ -35,6 +35,12 @@ import {
   watchRemoveCard,
 } from './cards';
 
+import {
+  watchFetchAudits,
+  watchAddAudit,
+  watchRemoveAudit,
+} from './audits';
+
 
 function* mainSaga() {
   yield all([
@@ -55,6 +61,9 @@ function* mainSaga() {
     fork(watchFetchCards),
     fork(watchAddCard),
     fork(watchRemoveCard),
+    fork(watchFetchAudits),
+    fork(watchAddAudit),
+    fork(watchRemoveAudit),
   ]);
 }
 
