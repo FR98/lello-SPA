@@ -66,7 +66,7 @@ export const getSelectedBoard = state => selectsSelectors.getSelectedBoard(state
 export const getSelectedList = state => selectsSelectors.getSelectedList(state.selects);
 
 export const getAudit = (state, id) => auditsSelectors.getAudit(state.audits, id);
-export const getAudits = state => auditsSelectors.getAudit(state.audits);
+export const getAudits = state => auditsSelectors.getAudits(state.audits);
 export const isFetchingAudits = state => auditsSelectors.isFetchingAudits(state.audits);
 export const getAuditsError = state => auditsSelectors.getAuditsError(state.audits);
 

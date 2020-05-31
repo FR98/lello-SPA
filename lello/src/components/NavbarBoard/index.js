@@ -26,7 +26,6 @@ const NavbarBoard = ({ data, boardId }) => {
                 <Link to={'${path}/calendar'}>
                     <GeneralBtn text="Calendario"/>
                 </Link>
-                {console.log(boardId)}
                 <BoardDescription id={boardId}/>
             </div>
         </div>
