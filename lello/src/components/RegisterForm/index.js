@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuid } from 'uuid';
+import { Field, reduxForm, reset } from 'redux-form';
 import {
     BrowserRouter as Router,
     Switch,
@@ -11,104 +13,95 @@ import {
 } from "react-router-dom";
 
 import * as selectors from '../../reducers';
-import * as actions from '../../actions/auth';
+import * as actions from '../../actions/users';
 
+import { RenderInput } from '../FormFields';
+import { GeneralBtn } from '../Buttons';
 import './styles.css'; 
 
 
-const RegisterForm = ({
-    onSubmit,
-    isLoading,
-    error = null,
-    isAuthenticated = false
-}) => {
-    const [username, changeUsername] = useState('');
-    const [password, changePassword] = useState('');
-    if (isAuthenticated) {
-        return (
-            <Redirect to='/dashboard' />
-        );
-    }
-    return (
-        <div className="page">
-            <div className='register-form'>
-                <h1>BIENVENIDO A LELLO</h1>
-                <h2>Registro</h2>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={e => changeUsername(e.target.value)}
-                    className="register-input"
-                />
-                <br/>
-                <input
-                    type="text"
-                    placeholder="Gender"
-                    value={username}
-                    onChange={e => changeUsername(e.target.value)}
-                    className="register-input"
-                />
-                <br/>
-                <input
-                    type="text"
-                    placeholder="Phone"
-                    value={username}
-                    onChange={e => changeUsername(e.target.value)}
-                    className="register-input"
-                />
-                <br/>
-                <input
-                    type="text"
-                    placeholder="Birth Date"
-                    value={username}
-                    onChange={e => changeUsername(e.target.value)}
-                    className="register-input"
-                />
-                <br/>
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={e => changePassword(e.target.value)}
-                    className="register-input"
-                />
-                    <br/>
-                <p>
-                    {
-                        isLoading ? (
-                            <strong>{'Cargando...'}</strong>
-                        ) : (
-                            <button type="submit" onClick={
-                                () => onSubmit(username, password)
-                            }
-                            className="btn-register">
-                                {'Enviar'}
-                            </button>
-                        )
-                    }
-                </p>
-                {
-                    error && (
-                    <p>
-                        <strong className='error-text'>{ error }</strong>
-                    </p>
-                    )
-                }
-            </div>
+const RegisterForm = ({ handleSubmit }) => (
+    <form onSubmit={ handleSubmit }>
+        <div className="div-display-column">
+            <h1>BIENVENIDO A LELLO</h1>
+            <h2>Registro</h2>
+
+            <label>Username</label>
+            <Field
+                name='username'
+                type="text"
+                placeholder="Username"
+                component={ RenderInput }
+                className="register-input"
+            />
+            <label>Gender</label>
+            <Field
+                name='gender'
+                type="text"
+                placeholder="Gender"
+                component={ RenderInput }
+                className="register-input"
+            />
+            <label>Phone</label>
+            <Field
+                name='phone'
+                type="text"
+                placeholder="Phone"
+                component={ RenderInput }
+                className="register-input"
+            />
+            <label>Birth Date (YYYY-MM-DD)</label>
+            <Field
+                name='birthdate'
+                type="text"
+                placeholder="Birth Date"
+                component={ RenderInput }
+                className="register-input"
+            />
+            <label>Password</label>
+            <Field
+                name='password'
+                type="password"
+                placeholder="Password"
+                component={ RenderInput }
+                className="register-input"
+            />
+
+            <GeneralBtn 
+                text={"Enviar"}
+                type={'submit'}
+            />  
         </div>
-    );
-};
+    </form>
+);
 
 export default connect(
-    state => ({
-        isLoading: selectors.getIsAuthenticating(state),
-        error: selectors.getAuthenticatingError(state),
-        isAuthenticated: selectors.isAuthenticated(state),
-    }),
-    dispatch => ({
-        onSubmit(username, password) {
-            dispatch(actions.startLogin(username, password));
+    state => ({}),
+)(
+    reduxForm({
+        form: 'addUser',
+        onSubmit({ username, gender, phone, birthdate, password }, dispatch) {
+            dispatch(
+                actions.startAddingUser({
+                    id: uuid(),
+                    gender,
+                    phone,
+                    birthdate,
+                    password
+                }),
+            );
+            dispatch(reset('addUser'));
         },
-    }),
-)(RegisterForm);
+        validate(values) {
+            const errors = {};
+            if (values.gender && values.gender.length > 2) {
+                errors.gender = "Ingrese M para masculino y F para femenino";
+            } 
+            if (values.phone  && values.phone.length > 8){
+                errors.phone = "El numero telefonico no puede ser mayor a 8 digitos";
+            }
+            return errors;
+        }
+    })(RegisterForm)
+);
+
