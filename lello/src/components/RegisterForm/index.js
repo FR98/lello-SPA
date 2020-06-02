@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
     BrowserRouter as Router,
@@ -16,7 +16,7 @@ import * as actions from '../../actions/auth';
 import './styles.css'; 
 
 
-const LoginForm = ({
+const RegisterForm = ({
     onSubmit,
     isLoading,
     error = null,
@@ -31,23 +31,49 @@ const LoginForm = ({
     }
     return (
         <div className="page">
-            <div className='login-form'>
+            <div className='register-form'>
                 <h1>BIENVENIDO A LELLO</h1>
-                <p>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        value={username}
-                        onChange={e => changeUsername(e.target.value)}
-                    />
+                <h2>Registro</h2>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={e => changeUsername(e.target.value)}
+                    className="register-input"
+                />
+                <br/>
+                <input
+                    type="text"
+                    placeholder="Gender"
+                    value={username}
+                    onChange={e => changeUsername(e.target.value)}
+                    className="register-input"
+                />
+                <br/>
+                <input
+                    type="text"
+                    placeholder="Phone"
+                    value={username}
+                    onChange={e => changeUsername(e.target.value)}
+                    className="register-input"
+                />
+                <br/>
+                <input
+                    type="text"
+                    placeholder="Birth Date"
+                    value={username}
+                    onChange={e => changeUsername(e.target.value)}
+                    className="register-input"
+                />
+                <br/>
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={e => changePassword(e.target.value)}
+                    className="register-input"
+                />
                     <br/>
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={e => changePassword(e.target.value)}
-                    />
-                </p>
                 <p>
                     {
                         isLoading ? (
@@ -55,12 +81,12 @@ const LoginForm = ({
                         ) : (
                             <button type="submit" onClick={
                                 () => onSubmit(username, password)
-                            }>
+                            }
+                            className="btn-register">
                                 {'Enviar'}
                             </button>
                         )
                     }
-                    <label className="register-link">¿No tienes cuenta? <Link to={`/register`} >Registrate</Link></label>
                 </p>
                 {
                     error && (
@@ -85,4 +111,4 @@ export default connect(
             dispatch(actions.startLogin(username, password));
         },
     }),
-)(LoginForm);
+)(RegisterForm);

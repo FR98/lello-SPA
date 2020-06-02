@@ -14,9 +14,6 @@ const Notifications = ({ data, allNotifications, onLoad }) => {
         <Popup trigger={<AccessAlarmIcon className="iconNot" fontSize="large"/>} position="bottom center">
         {close => (
             <div className="notifications-container">
-                {console.log("hola", data)}
-                {console.log("adios", allNotifications)}
-        
                 <a className="close" onClick={close}>
                     &times;
                 </a>
