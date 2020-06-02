@@ -22,55 +22,56 @@ import './styles.css'; 
 
 const RegisterForm = ({ handleSubmit }) => (
     <form onSubmit={ handleSubmit }>
-        <div className="div-display-column">
-            <h1>BIENVENIDO A LELLO</h1>
-            <h2>Registro</h2>
+        <div className="display-all">
+            <div className="div-display-column-register">
+                <h2>Registro</h2>
 
-            <label>Username</label>
-            <Field
-                name='username'
-                type="text"
-                placeholder="Username"
-                component={ RenderInput }
-                className="register-input"
-            />
-            <label>Gender</label>
-            <Field
-                name='gender'
-                type="text"
-                placeholder="Gender"
-                component={ RenderInput }
-                className="register-input"
-            />
-            <label>Phone</label>
-            <Field
-                name='phone'
-                type="text"
-                placeholder="Phone"
-                component={ RenderInput }
-                className="register-input"
-            />
-            <label>Birth Date (YYYY-MM-DD)</label>
-            <Field
-                name='birthdate'
-                type="text"
-                placeholder="Birth Date"
-                component={ RenderInput }
-                className="register-input"
-            />
-            <label>Password</label>
-            <Field
-                name='password'
-                type="password"
-                placeholder="Password"
-                component={ RenderInput }
-                className="register-input"
-            />
+                <label className="label-register">Username</label>
+                <Field
+                    name='username'
+                    type="text"
+                    placeholder="Username"
+                    component={ RenderInput }
+                    className="register-input"
+                />
+                <label>Gender</label>
+                <Field
+                    name='gender'
+                    type="text"
+                    placeholder="Gender"
+                    component={ RenderInput }
+                    className="register-input"
+                />
+                <label>Phone</label>
+                <Field
+                    name='phone'
+                    type="text"
+                    placeholder="Phone"
+                    component={ RenderInput }
+                    className="register-input"
+                />
+                <label>Birth Date (YYYY-MM-DD)</label>
+                <Field
+                    name='birthdate'
+                    type="text"
+                    placeholder="Birth Date"
+                    component={ RenderInput }
+                    className="register-input"
+                />
+                <label>Password</label>
+                <Field
+                    name='password'
+                    type="password"
+                    placeholder="Password"
+                    component={ RenderInput }
+                    className="register-input"
+                />
 
-            <GeneralBtn 
-                text={"Enviar"}
-                type={'submit'}
-            />  
+                <GeneralBtn 
+                    text={"Enviar"}
+                    type={'submit'}
+                />  
+            </div>
         </div>
     </form>
 );
@@ -84,10 +85,13 @@ export default connect(
             dispatch(
                 actions.startAddingUser({
                     id: uuid(),
-                    gender,
-                    phone,
-                    birthdate,
-                    password
+                    username,
+                    password,
+                    'userdetail_set': [{
+                        gender,
+                        phone,
+                        birthdate
+                    }]
                 }),
             );
             dispatch(reset('addUser'));

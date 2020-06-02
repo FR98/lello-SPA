@@ -60,7 +60,8 @@ const LoginForm = ({
                             </button>
                         )
                     }
-                    <label className="register-link">¿No tienes cuenta? <Link to={`/register`} >Registrate</Link></label>
+                    <br/>
+                    <label className="register-link">¿No tienes cuenta?</label> <Link to={`/register`} ><label className="registrate-link"> Registrate</label></Link>
                 </p>
                 {
                     error && (
