@@ -25,22 +25,24 @@ const Day = ({ date, events = [] }) => {
                 <h1>{ moment(date).calendar(null, dateFormat) }</h1>
                 <h3>{ moment(date).format("DD-MM-YYYY") }</h3>
             </div>
-            {
-                events.length === 0 && (
-                    <p>{ 'No hay' }</p>
-                )
-            }
-            {
-                events.length > 0 && (
-                    <table>
-                        <tbody>
-                            {
-                                events.map(({ id }) => <Event key={id} id={id} />)
-                            }
-                        </tbody>
-                    </table>
-                )
-            }
+            <div className="scrollEvents">
+                {
+                    events.length === 0 && (
+                        <p>{ 'No hay' }</p>
+                    )
+                }
+                {
+                    events.length > 0 && (
+                        <table>
+                            <tbody>
+                                {
+                                    events.map(({ id }) => <Event key={id} id={id} />)
+                                }
+                            </tbody>
+                        </table>
+                    )
+                }
+            </div>
         </div>
     );
 };
