@@ -8,7 +8,7 @@ import './styles.css'; 
 import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/cards';
 
-import { GeneralBtn } from '../../Buttons';
+import { GeneralBtn, DangerBtn } from '../../Buttons';
 
 
 const OpenCard = ({ state, handleSubmit }) => {
@@ -25,7 +25,10 @@ const OpenCard = ({ state, handleSubmit }) => {
             <div className="openCard-container">
                 <div className="close">
                     <Link to={`/boards/${id}`}>
-                        <label>X</label>
+                        <DangerBtn text={ "DEL" } action={ actions.startRemovingCard( cardid ) } />
+                    </Link>
+                    <Link to={`/boards/${id}`}>
+                        <DangerBtn text={ "X" } />
                     </Link>
                 </div>
                 <div className="openCard-header">

@@ -39,7 +39,7 @@ const Card = ({ state, data }) => {
                         }
                         {
                             data.assigned_to.length > 0  && (
-                                data.assigned_to.map(member_id => <div>{ selectors.getUser(state, member_id).username }</div>)
+                                data.assigned_to.map(member_id => <div key={member_id}>{ selectors.getUser(state, member_id).username }</div>)
                             )
                         }
                     </label>
