@@ -9,13 +9,11 @@ import './styles.css'; 
 import PersonIcon from '@material-ui/icons/Person';
 
 const Profile = ({userId, state}) => {
-    console.log(userId)
     const data = selectors.getUser(state, userId);
     return(
         <Popup trigger={<PersonIcon className="iconPer" fontSize="large"/>} position="bottom center">
         {close => (
             <div className="notifications-container">
-                {console.log("Data: ", data)}
 
                 <a className="close" onClick={close}>
                     &times;

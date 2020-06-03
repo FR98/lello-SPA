@@ -6,7 +6,7 @@ import * as actions from '../../../actions/audits';
 import * as selectors from '../../../reducers';
 import './styles.css'; 
 
-const BoardDescription = ({ data, audits, onLoad, isLoading }) => {
+const BoardDescription = ({ data, owner, audits, onLoad, isLoading }) => {
     useEffect(onLoad, []);
     return(
         <Popup trigger={<button className="general-button">Mostrar menú</button>} modal>
@@ -17,11 +17,11 @@ const BoardDescription = ({ data, audits, onLoad, isLoading }) => {
                 </a>
                 <div className="descriptionBoard-creators">
                     <h2>Creado por</h2>
-                    <label className="creators">{data.owner.username}</label>
+                    <label className="creators">{owner.username}</label>
                 </div>
                 <div className="descriptionBoard-description">
                     <h2>Descripción</h2>
-                    <textarea className= "creators" placeholder="Descripcion del tablero">{data.descriptiom}</textarea>
+                    <textarea className= "creators" placeholder="Descripcion del tablero">{data.description}</textarea>
                 </div>
                 <h2>Actividad</h2>
                 <div className="descriptionBoard-audits">
@@ -73,6 +73,7 @@ export default connect(
         data: selectors.getBoard(state, id),
         audits: selectors.getAudits(state),
         isLoading: selectors.isFetchingAudits(state),
+        owner: selectors.getUser(state, selectors.getBoard(state, id).owner)
     }),
     dispatch => ({
         onLoad(boardId) {
