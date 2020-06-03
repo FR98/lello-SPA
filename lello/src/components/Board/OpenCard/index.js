@@ -10,8 +10,8 @@ import * as actions from '../../../actions/cards';
 
 import { GeneralBtn } from '../../Buttons';
 
-// TODO: REVISAR; NO SE PUEDE HACER REFRESH
-const OpenCard = ({ state }) => {
+
+const OpenCard = ({ state, handleSubmit }) => {
     const { cardid, id } = useParams();
     const data = selectors.getCard(state, cardid);
 
@@ -96,13 +96,13 @@ const OpenCard = ({ state }) => {
                             <button type="submit" onClick={handleClick}>{disabled ? "Editar": "Guardar"}</button>
                         </div>
                     </div>
-                    <div className="openCard-buttons">
-                        <GeneralBtn text="Unirse"/>
-                        <GeneralBtn text="Miembros"/>
-                        <GeneralBtn text="Etiquetas"/>
-                        <GeneralBtn text="Checklist"/>
-                        <GeneralBtn text="Vencimiento"/>
-                    </div>
+                    {/* <div className="openCard-buttons"> */}
+                        {/* <GeneralBtn text="Unirse"/> */}
+                        {/* <GeneralBtn text="Miembros"/> */}
+                        {/* <GeneralBtn text="Etiquetas"/> */}
+                        {/* <GeneralBtn text="Checklist"/> */}
+                        {/* <GeneralBtn text="Vencimiento"/> */}
+                    {/* </div> */}
                 </div>
             </div>
         </div>
