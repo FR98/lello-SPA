@@ -34,7 +34,7 @@ const RegisterForm = ({ handleSubmit }) => (
                     component={ RenderInput }
                     className="register-input"
                 />
-                <label>Gender</label>
+                <label className="label-register">Gender</label>
                 <Field
                     name='gender'
                     type="text"
@@ -42,7 +42,7 @@ const RegisterForm = ({ handleSubmit }) => (
                     component={ RenderInput }
                     className="register-input"
                 />
-                <label>Phone</label>
+                <label className="label-register">Phone</label>
                 <Field
                     name='phone'
                     type="text"
@@ -50,7 +50,7 @@ const RegisterForm = ({ handleSubmit }) => (
                     component={ RenderInput }
                     className="register-input"
                 />
-                <label>Birth Date (YYYY-MM-DD)</label>
+                <label className="label-register">Birth Date (YYYY-MM-DD)</label>
                 <Field
                     name='birthdate'
                     type="text"
@@ -58,7 +58,7 @@ const RegisterForm = ({ handleSubmit }) => (
                     component={ RenderInput }
                     className="register-input"
                 />
-                <label>Password</label>
+                <label className="label-register">Password</label>
                 <Field
                     name='password'
                     type="password"
@@ -66,7 +66,7 @@ const RegisterForm = ({ handleSubmit }) => (
                     component={ RenderInput }
                     className="register-input"
                 />
-
+                <br/>
                 <GeneralBtn 
                     text={"Enviar"}
                     type={'submit'}
@@ -87,7 +87,7 @@ export default connect(
                     id: uuid(),
                     username,
                     password,
-                    'userdetail_set': [{
+                    'userdetail': [{
                         gender,
                         phone,
                         birthdate

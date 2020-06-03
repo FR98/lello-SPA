@@ -10,15 +10,68 @@ import * as actions from '../../../actions/cards';
 
 import { GeneralBtn } from '../../Buttons';
 
+// const nodemailer = require('nodemailer');
+// var express = require('express');
+// var router = express.Router();
+
+
+
+
+
 // TODO: REVISAR; NO SE PUEDE HACER REFRESH
 const OpenCard = ({ state }) => {
     const { cardid, id } = useParams();
     const data = selectors.getCard(state, cardid);
 
     const [disabled, setDisabled] = useState(true);
+    
     function handleClick() {
         setDisabled(!disabled);
     }
+
+    // const boardId = selectors.getSelectedBoard(state)
+    // const board = selectors.getBoard(state, boardId)
+
+    // const transporter = nodemailer.createTransport({
+    //     host: 'smtp.hotmail.com',
+    //     service: 'hotmail',
+    //     // port: 465,
+    //     // secure: false,
+    //     auth: {
+    //         user: 'lelloinc@hotmail.com',
+    //         pass: 'lelloadmin123'
+    //     }
+    // });
+    
+    // router.post('/send', (res) => {
+
+    //     const mailOptions = {
+    //         from: 'lelloinc@hotmail.com',
+    //         to: 'gianluca.ping@gmail.com',
+    //         subject: 'Sending Email using Node.js',
+    //         text: 'Sos el mejor mano'
+    //     }
+
+    //     transporter.sendMail(mailOptions, (err, data) => {
+    //         if (err) {
+    //           res.json({
+    //             msg: 'fail'
+    //           })
+    //         } else {
+    //           res.json({
+    //             msg: 'success'
+    //           })
+    //         }
+    //     })
+    // })
+
+//     const mandarEmail = (transporter, mailOptions) => transporter.sendMail(mailOptions, function(error, info){
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log('Email sent: ' + info.response);
+//     }
+// });
 
     return(
         <div className="all-container">
@@ -102,6 +155,7 @@ const OpenCard = ({ state }) => {
                         <GeneralBtn text="Etiquetas"/>
                         <GeneralBtn text="Checklist"/>
                         <GeneralBtn text="Vencimiento"/>
+                        <button className="general-button" >Notificar tarjeta</button>
                     </div>
                 </div>
             </div>
