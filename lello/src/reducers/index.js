@@ -7,6 +7,7 @@ import teams, * as teamsSelectors from './teams';
 import boards, * as boardsSelectors from './boards';
 import events, * as eventsSelectors from './events';
 import lists, * as listsSelectors from './lists';
+import checklists, * as checklistsSelectors from './checklists';
 import cards, * as cardsSelectors from './cards';
 import selects, * as selectsSelectors from './selects';
 import audits, * as auditsSelectors from './audits';
@@ -23,6 +24,7 @@ const reducer = combineReducers({
     selects,
     audits,
     notifications,
+    checklists,
     form: formReducer,
 });
 
@@ -83,6 +85,11 @@ export const getNotification = (state, id) => notificationsSelectors.getNotifica
 export const getNotifications = state => notificationsSelectors.getNotifications(state.notifications);
 export const isFetchingNotifications = state => notificationsSelectors.isFetchingNotifications(state.notifications);
 export const getNotificationsError = state => notificationsSelectors.getNotificationsError(state.notifications);
+
+export const getChecklist = (state, id) => checklistsSelectors.getChecklist(state.checklists, id);
+export const getChecklists = state => checklistsSelectors.getChecklists(state.checklists);
+export const isFetchingChecklists = state => checklistsSelectors.isFetchingChecklists(state.checklists);
+export const getChecklistsError = state => checklistsSelectors.getChecklistsError(state.checklists);
 
 
 export const getListCardsIds = (state, id) => {
