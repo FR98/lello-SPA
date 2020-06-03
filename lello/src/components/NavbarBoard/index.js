@@ -11,7 +11,7 @@ import BoardDescription from '../Board/BoardDescription';
 import * as selectors from '../../reducers';
 
 
-const NavbarBoard = ({ data }) => {
+const NavbarBoard = ({ data, boardId }) => {
     const { path, url } = useRouteMatch();
     return(
         <div className="navbarBoard-container">
@@ -23,10 +23,10 @@ const NavbarBoard = ({ data }) => {
                 <GeneralBtn text="Público"/>
             </div>
             <div className="navbarBoard-rigth">
-                <Link to={'${path}/calendar'}>
-                    <GeneralBtn text="Calendario"/>
+                <Link to={`${path}/calendar`}>
+                    <GeneralBtn text="Calendario" /> 
                 </Link>
-                <BoardDescription/>
+                <BoardDescription id={boardId}/>
             </div>
         </div>
     );
@@ -35,5 +35,6 @@ const NavbarBoard = ({ data }) => {
 export default connect(
     state => ({
         data: state,
+        boardId: selectors.getSelectedBoard(state),
     })
 )(NavbarBoard);

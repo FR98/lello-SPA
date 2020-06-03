@@ -1,0 +1,39 @@
+.register-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.register-input {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius:5px;
+    border: 1px solid black;
+}
+
+.btn-register {
+    padding: 0.5rem 1rem 0.5rem 1rem;  
+    border-radius: 15px;
+    border: 1px solid black
+}
+
+.div-display-column-register{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    background: black;
+    padding: 3rem;
+    border-radius: 20px;
+}
+
+.display-all {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.label-register{
+    font-size: 20px;
+    margin-top: 0.5rem;
+}
+

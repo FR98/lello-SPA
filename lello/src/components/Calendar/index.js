@@ -9,6 +9,7 @@ import Day from './Day';
 import * as selectors from '../../reducers';
 import * as actions from '../../actions/events';
 
+import { getSelectedBoard } from '../../reducers/selects';
 const now = moment().format("YYYY-MM-DD");
 
 const Calendar = ({ onLoad }) => {
@@ -28,10 +29,20 @@ const Calendar = ({ onLoad }) => {
 };
 
 export default connect(
-    state => ({}),
+    state => ({
+        boardId: selectors.getSelectedBoard(state),
+    }),
     dispatch => ({
-        onLoad() {
-            dispatch(actions.startFetchingEvents())
+        onLoad(boardId) {
+            dispatch(actions.startFetchingEvents(boardId))
         },
-    })
+    }),
+    (stateProps, dispatchProps, ownProps) => ({
+        ...ownProps,
+        ...stateProps,
+        ...dispatchProps,
+        onLoad() {
+            dispatchProps.onLoad(stateProps.boardId);
+        }
+    }),
 )(Calendar);

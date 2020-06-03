@@ -11,3 +11,22 @@
     background: #E4E4E4;
     width: fit-content;
 }
+
+.descriptionBoard-audits {
+    background-color: #E4E4E4;;
+    height: 20rem;
+    overflow-y: scroll;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+

@@ -20,6 +20,7 @@ import TokenRefresh from '../TokenRefresh';
 import Index from '../Views/Index';
 import Dashboard from '../Views/Dashboard';
 import Boards from '../Views/Boards';
+import Register from '../RegisterForm';
 
 
 export const UserIsAuthenticated = connectedRouterRedirect({
@@ -44,6 +45,11 @@ const routes = [
         path: '/boards',
         exact: false,
         component: UserIsAuthenticated(Boards),
+    },
+    {
+        path: '/register',
+        exact: true,
+        component: Register,
     },
     // {
     //     path: '/users',

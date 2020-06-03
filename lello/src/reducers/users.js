@@ -105,3 +105,4 @@ export const getUser = (state, id) => state.byId[id];
 export const getUsers = state => state.order.map(id => getUser(state, id));
 export const isFetchingUsers = state => state.isFetching;
 export const getUsersError = state => state.error;
+
