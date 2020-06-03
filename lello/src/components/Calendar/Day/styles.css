@@ -7,4 +7,11 @@
     margin: 0.5rem;
     padding: 0.1rem;
     color: black;
+    /* height: 50rem;
+    overflow-y: scroll; */
+    max-height: 45rem;
+}
+
+.scrollEvents {
+    overflow-y: scroll;
 }
