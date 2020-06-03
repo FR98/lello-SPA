@@ -8,7 +8,7 @@ import * as actions from '../../actions/notifications';
 import './styles.css'; 
 import AccessAlarmIcon from '@material-ui/icons/NotificationsNone';
 
-const Notifications = ({ data, allNotifications, onLoad }) => {
+const Notifications = ({ allNotifications, onLoad }) => {
     useEffect(onLoad, []);
     return(
         <Popup trigger={<AccessAlarmIcon className="iconNot" fontSize="large"/>} position="bottom center">
@@ -41,7 +41,6 @@ const Notifications = ({ data, allNotifications, onLoad }) => {
   
 export default connect(
     state => ({
-        data: selectors.getAuthUserID(state),
         allNotifications: selectors.getNotifications(state)
     }),
     dispatch => ({

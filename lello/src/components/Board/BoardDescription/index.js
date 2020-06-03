@@ -26,11 +26,6 @@ const BoardDescription = ({ data, audits, onLoad, isLoading }) => {
                 <h2>Actividad</h2>
                 <div className="descriptionBoard-audits">
                     {
-                        audits.length === 0 && !isLoading && (
-                            <p>{ 'No hay' }</p>
-                        )
-                    }
-                    {
                         isLoading && (
                             <p>{ 'Cargando...' }</p>
                         )
@@ -80,8 +75,16 @@ export default connect(
         isLoading: selectors.isFetchingAudits(state),
     }),
     dispatch => ({
-        onLoad() {
-            dispatch(actions.startFetchingAudits());
+        onLoad(boardId) {
+            dispatch(actions.startFetchingAudits(boardId));
         }
     }),
+    (stateProps, dispatchProps, ownProps) => ({
+        ...ownProps,
+        ...stateProps,
+        ...dispatchProps,
+        onLoad() {
+          dispatchProps.onLoad(ownProps.id);
+        },
+      }),
 )(BoardDescription);

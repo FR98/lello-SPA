@@ -1,10 +1,10 @@
 import * as types from '../types/notifications';
 
 
-export const startFetchingNotifications = listId => ({
+export const startFetchingNotifications = userId => ({
     type: types.FETCH_NOTIFICATIONS_STARTED,
     payload: {
-        listId,
+        userId,
     }
 });
 
