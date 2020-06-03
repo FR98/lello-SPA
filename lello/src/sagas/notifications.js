@@ -22,12 +22,13 @@ import {
 function* fetchNotifications(action) {
     try {
         const isAuth = yield select(selectors.isAuthenticated);
+        const userId = yield select(selectors.getAuthUserID);
 
         if (isAuth) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/notifications/`,
+                `${API_BASE_URL}/users/${userId}/notifications/`,
                 {
                     method: 'GET',
                     headers:{

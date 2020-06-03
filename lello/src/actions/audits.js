@@ -1,10 +1,10 @@
 import * as types from '../types/audits';
 
 
-export const startFetchingAudits = listId => ({
+export const startFetchingAudits = boardId => ({
     type: types.FETCH_AUDITS_STARTED,
     payload: {
-        listId,
+        boardId,
     }
 });
 

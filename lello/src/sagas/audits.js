@@ -27,7 +27,7 @@ function* fetchAudits(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/audits/`,
+                `${API_BASE_URL}/boards/${action.payload.boardId}/audits/`,
                 {
                     method: 'GET',
                     headers:{
