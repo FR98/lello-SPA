@@ -11,8 +11,8 @@ import { GeneralBtn } from '../../Buttons';
 
 const Card = ({ state, data }) => {
     const { path, url } = useRouteMatch();
-    return(
-        <Link to={`${path}/cards/${data.id}`}>
+    return (
+        <Link to={`${url}/cards/${data.id}`}>
             <div className="card-container">
                 <div className="card-superiorContainer">
                     <label className="card-title">
@@ -39,7 +39,7 @@ const Card = ({ state, data }) => {
                         }
                         {
                             data.assigned_to.length > 0  && (
-                                data.assigned_to.map(member_id => <div>{ selectors.getUser(state, member_id).username }</div>)
+                                data.assigned_to.map(member_id => <div key={member_id}>{ selectors.getUser(state, member_id).username }</div>)
                             )
                         }
                     </label>

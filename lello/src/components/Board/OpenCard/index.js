@@ -8,18 +8,13 @@ import './styles.css'; 
 import * as selectors from '../../../reducers';
 import * as actions from '../../../actions/cards';
 
-import { GeneralBtn } from '../../Buttons';
+import { GeneralBtn, DangerBtn } from '../../Buttons';
 
 // const nodemailer = require('nodemailer');
 // var express = require('express');
 // var router = express.Router();
 
-
-
-
-
-// TODO: REVISAR; NO SE PUEDE HACER REFRESH
-const OpenCard = ({ state }) => {
+const OpenCard = ({ state, handleSubmit }) => {
     const { cardid, id } = useParams();
     const data = selectors.getCard(state, cardid);
 
@@ -78,7 +73,10 @@ const OpenCard = ({ state }) => {
             <div className="openCard-container">
                 <div className="close">
                     <Link to={`/boards/${id}`}>
-                        <label>X</label>
+                        <DangerBtn text={ "DEL" } action={ actions.startRemovingCard( cardid ) } />
+                    </Link>
+                    <Link to={`/boards/${id}`}>
+                        <DangerBtn text={ "X" } />
                     </Link>
                 </div>
                 <div className="openCard-header">

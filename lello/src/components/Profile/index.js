@@ -25,7 +25,7 @@ const Profile = ({userId, state}) => {
                     <h2>Perfil</h2>
                 </div>
                 <div>
-                    <label>Bill Gates</label>
+                    <label>{data.username}</label>
                 </div>
             </div>
         )}
