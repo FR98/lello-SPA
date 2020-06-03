@@ -6,6 +6,7 @@ import * as selectors from '../../reducers';
 import * as actions from '../../actions/notifications';
 
 import './styles.css'; 
+import { DangerBtn } from '../Buttons';
 import AccessAlarmIcon from '@material-ui/icons/NotificationsNone';
 
 const Notifications = ({ allNotifications, onLoad }) => {
@@ -28,6 +29,7 @@ const Notifications = ({ allNotifications, onLoad }) => {
                                 <div key={notification.id} className="notifications-onebyone">
                                     <strong><label>{notification.title}</label></strong>
                                     <label>{notification.description}</label>
+                                    <DangerBtn text={ "x" } action={ actions.startRemovingNotification(notification.id) } />
                                 </div>
                             )
                         })

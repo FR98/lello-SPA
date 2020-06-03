@@ -17,6 +17,9 @@ const byId = (state = {}, action) => {
             });
             return newState;
         }
+        case types.REMOVE_NOTIFICATION_STARTED: {
+            return omit(state, action.payload.id);
+        }
         default: {
             return state;
         }
@@ -29,6 +32,9 @@ const order = (state = [], action) => {
             return [
                 ...action.payload.order,
             ]
+        }
+        case types.REMOVE_NOTIFICATION_STARTED: {
+            return state.filter(id => id !== action.payload.id);
         }
         default: {
             return state;
@@ -57,7 +63,10 @@ const error = (state = null, action) => {
     switch(action.type) {
         case types.FETCH_NOTIFICATIONS_STARTED:
         case types.FETCH_NOTIFICATIONS_COMPLETED:
+        case types.REMOVE_NOTIFICATION_STARTED:
+        case types.REMOVE_NOTIFICATION_COMPLETED:
             return null;
+        case types.REMOVE_NOTIFICATION_FAILED:
         case types.FETCH_NOTIFICATIONS_FAILED:
             return action.payload.error;
         default: {

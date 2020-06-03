@@ -23,3 +23,21 @@ export const failFetchingNotifications = error => ({
     },
 });
 
+export const startRemovingNotification = id => ({
+    type: types.REMOVE_NOTIFICATION_STARTED,
+    payload: {
+        id,
+    },
+});
+
+export const completeRemovingNotification = () => ({
+    type: types.REMOVE_NOTIFICATION_COMPLETED,
+});
+
+export const failRemovingNotification = (id, error) => ({
+    type: types.REMOVE_NOTIFICATION_FAILED,
+    payload: {
+        id,
+        error,
+    },
+});

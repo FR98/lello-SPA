@@ -46,6 +46,7 @@ import {
 
 import {
   watchFetchNotifications,
+  watchRemoveNotification,
 } from './notifications';
 
 
@@ -72,6 +73,7 @@ function* mainSaga() {
     fork(watchRemoveCard),
     fork(watchFetchAudits),
     fork(watchFetchNotifications),
+    fork(watchRemoveNotification),
   ]);
 }
 
