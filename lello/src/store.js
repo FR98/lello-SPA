@@ -13,7 +13,7 @@ export const configureStore = () => {
     const persistConfig = {
         key: 'rootx',
         storage,
-        whitelist: ['auth', 'selects', 'users'],
+        // whitelist: ['auth', 'selects', 'users'],
     };
     
     const persistedReducer = persistReducer(

@@ -14,7 +14,6 @@ const Profile = ({userId, state}) => {
         <Popup trigger={<PersonIcon className="iconPer" fontSize="large"/>} position="bottom center">
         {close => (
             <div className="notifications-container">
-
                 <a className="close" onClick={close}>
                     &times;
                 </a>
@@ -22,8 +21,10 @@ const Profile = ({userId, state}) => {
                 <div className="notifications-title">
                     <h2>Perfil</h2>
                 </div>
-                <div>
-                    <label>{data.username}</label>
+                <div className="registerInfo">
+                    <label className="info"><b>Username:</b> {data.username}</label>
+                    <label><b>Email: </b> {data.email}</label>
+                    <label></label>
                 </div>
             </div>
         )}
