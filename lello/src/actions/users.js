@@ -24,9 +24,12 @@ export const failFetchingUsers = error => ({
 });
 
 
-export const startAddingUser = user => ({
+export const startAddingUser = (user, detail) => ({
     type: types.ADD_USER_STARTED,
-    payload: user,
+    payload: {
+        user,
+        detail
+    }
 });
 
 export const completeAddingUser = (tempId, user) => ({

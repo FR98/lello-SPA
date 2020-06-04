@@ -11,6 +11,7 @@ import {
     useRouteMatch,
     useParams
 } from "react-router-dom";
+import moment from 'moment';
 
 import * as selectors from '../../reducers';
 import * as actions from '../../actions/users';
@@ -50,7 +51,7 @@ const RegisterForm = ({ handleSubmit }) => (
                     component={ RenderInput }
                     className="register-input"
                 />
-                <label className="label-register">Birth Date (YYYY-MM-DD)</label>
+                <label className="label-register">Birth Date</label>
                 <Field
                     name='birthdate'
                     type="text"
@@ -67,10 +68,12 @@ const RegisterForm = ({ handleSubmit }) => (
                     className="register-input"
                 />
                 <br/>
-                <GeneralBtn 
-                    text={"Enviar"}
-                    type={'submit'}
-                />  
+                <Link to='/'>
+                    <GeneralBtn 
+                        text={"Enviar"}
+                        type={'submit'}
+                    />  
+                </Link>
             </div>
         </div>
     </form>
@@ -83,22 +86,24 @@ export default connect(
         form: 'addUser',
         onSubmit({ username, gender, phone, birthdate, password }, dispatch) {
             dispatch(
-                actions.startAddingUser({
-                    id: uuid(),
-                    username,
-                    password,
-                    'userdetail': [{
+                actions.startAddingUser(
+                    {
+                        id: uuid(),
+                        username,
+                        password,
+                    },
+                    {
                         gender,
                         phone,
-                        birthdate
-                    }]
-                }),
+                        birthdate: moment(birthdate, "DD/MM/YYYY").format("YYYY-MM-DD")
+                    }
+                ),
             );
             dispatch(reset('addUser'));
         },
         validate(values) {
             const errors = {};
-            if (values.gender && values.gender.length > 2) {
+            if (values.gender && values.gender.length > 10) {
                 errors.gender = "Ingrese M para masculino y F para femenino";
             } 
             if (values.phone  && values.phone.length > 8){
