@@ -1,3 +1,12 @@
 .iconPer {
     color: black;
 }
+
+.registerInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    margin-bottom: 1rem;
+}
