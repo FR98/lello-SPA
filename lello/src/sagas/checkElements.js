@@ -11,15 +11,16 @@ import { normalize } from 'normalizr';
 
 import * as http from '../utils/http';
 import * as selectors from '../reducers';
-import * as actions from '../actions/events';
-import * as types from '../types/events';
-import * as schemas from '../schemas/events';
+import * as actions from '../actions/checkElements';
+import * as checklistsActions from '../actions/checklists';
+import * as types from '../types/checkElements';
+import * as schemas from '../schemas/checkElements';
 import {
     API_BASE_URL,
 } from '../settings';
 
 
-function* fetchEvents(action) {
+function* fetchCheckElement(action) {
     try {
         const isAuth = yield select(selectors.isAuthenticated);
 
@@ -27,7 +28,7 @@ function* fetchEvents(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/boards/${action.payload.calendarId}/calendar-events/`,
+                `${API_BASE_URL}/checklists/${action.payload.checklistId}/checkElements/`,
                 {
                     method: 'GET',
                     headers:{
@@ -40,28 +41,28 @@ function* fetchEvents(action) {
             if (http.isSuccessful(response.status)) {
                 const jsonResult = yield response.json();
                 const {
-                    entities: { events },
+                    entities: { checkElement },
                     result,
-                } = normalize(jsonResult, schemas.events);
-                yield put(actions.completeFetchingEvents(events, result));
+                } = normalize(jsonResult, schemas.checkElement);
+                yield put(actions.completeFetchingCheckElements(checkElement, result));
             } else {
                 const { non_field_errors } = yield response.json();
-                yield put(actions.failFetchingEvents(non_field_errors[0]));
+                yield put(actions.failFetchingCheckElements(non_field_errors[0]));
             }
         }
     } catch (error) {
-        yield put(actions.failFetchingEvents('Connection failed!'));
+        yield put(actions.failFetchingCheckElements('Connection failed!'));
     }
 }
     
-export function* watchFetchEvents() {
+export function* watchFetchCheckElements() {
     yield takeEvery(
-        types.FETCH_EVENTS_STARTED,
-        fetchEvents,
+        types.FETCH_CHECKELEMENTS_STARTED,
+        fetchCheckElement,
     );
 }
 
-function* addEvent(action) {
+function* addCheckElement(action) {
     try {
         const isAuth = yield select(selectors.isAuthenticated);
 
@@ -69,7 +70,7 @@ function* addEvent(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/events/`,
+                `${API_BASE_URL}/checkElements/`,
                 {
                     method: 'POST',
                     body: JSON.stringify(action.payload),
@@ -83,29 +84,30 @@ function* addEvent(action) {
             if (http.isSuccessful(response.status)) {
                 const jsonResult = yield response.json();
                 yield put(
-                    actions.completeAddingEvent(
+                    actions.completeAddingCheckElement(
                         action.payload.id,
                         jsonResult,
                     )
                 );
+                // yield put(listsActions.startRefreshingList(action.payload.lista));
             } else {
                 const { non_field_errors } = yield response.json();
-                yield put(actions.failAddingEvent(non_field_errors[0]));
+                yield put(actions.failAddingCheckElement(non_field_errors[0]));
             }
         }
     } catch (error) {
-        yield put(actions.failAddingEvent('Connection failed!'));
+        yield put(actions.failAddingCheckElement('Connection failed!'));
     }
 }
     
-export function* watchAddEvent() {
+export function* watchAddCheckElement() {
     yield takeEvery(
-        types.ADD_EVENT_STARTED,
-        addEvent,
+        types.ADD_CHECKELEMENT_STARTED,
+        addCheckElement,
     );
 }
 
-function* removeEvent(action) {
+function* removeCheckElement(action) {
     try {
         const isAuth = yield select(selectors.isAuthenticated);
 
@@ -113,7 +115,7 @@ function* removeEvent(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/events/${action.payload.id}/`,
+                `${API_BASE_URL}/checkElements/${action.payload.id}/`,
                 {
                     method: 'DELETE',
                     headers:{
@@ -124,20 +126,20 @@ function* removeEvent(action) {
             );
         
             if (http.isSuccessful(response.status)) {
-                yield put(actions.completeRemovingEvent());
+                yield put(actions.completeRemovingCheckElement());
             } else {
                 const { non_field_errors } = yield response.json();
-                yield put(actions.failRemovingEvent(non_field_errors[0]));
+                yield put(actions.failRemovingCheckElement(non_field_errors[0]));
             }
         }
     } catch (error) {
-        yield put(actions.failRemovingEvent('Connection failed!'));
+        yield put(actions.failRemovingCheckElement('Connection failed!'));
     }
 }
     
-export function* watchRemoveEvent() {
+export function* watchRemoveCheckElement() {
     yield takeEvery(
-        types.REMOVE_EVENT_STARTED,
-        removeEvent,
+        types.REMOVE_CHECKELEMENT_STARTED,
+        removeCheckElement,
     );
 }

@@ -8,6 +8,7 @@ import boards, * as boardsSelectors from './boards';
 import events, * as eventsSelectors from './events';
 import lists, * as listsSelectors from './lists';
 import checklists, * as checklistsSelectors from './checklists';
+import checkElements, * as checkElementsSelectors from './checkElements';
 import cards, * as cardsSelectors from './cards';
 import selects, * as selectsSelectors from './selects';
 import audits, * as auditsSelectors from './audits';
@@ -25,6 +26,7 @@ const reducer = combineReducers({
     audits,
     notifications,
     checklists,
+    checkElements,
     form: formReducer,
 });
 
@@ -91,13 +93,28 @@ export const getChecklists = state => checklistsSelectors.getChecklists(state.ch
 export const isFetchingChecklists = state => checklistsSelectors.isFetchingChecklists(state.checklists);
 export const getChecklistsError = state => checklistsSelectors.getChecklistsError(state.checklists);
 
+export const getCheckElement = (state, id) => checkElementsSelectors.getCheckElement(state.checkElements, id);
+export const getCheckElements = state => checkElementsSelectors.getCheckElements(state.checkElements);
+export const isFetchingCheckElements = state => checkElementsSelectors.isFetchingCheckElements(state.checkElements);
+export const getCheckElementsError = state => checkElementsSelectors.getCheckElementsError(state.checkElements);
+
 
 export const getListCardsIds = (state, id) => {
     const list = listsSelectors.getList(state.lists, id);
-    const cards = [];
+    const cardsIds = [];
     list.card_set.map(id => {
         const card = cardsSelectors.getCard(state.cards, id)
-        card && cards.push(card.id)
+        card && cardsIds.push(card.id)
     });
-    return cards;
+    return cardsIds;
+};
+
+export const getChecklistElementsIds = (state, id) => {
+    const checklist = checklistsSelectors.getChecklist(state.checklists, id);
+    const elementsIds = [];
+    checklist.element_set.map(id => {
+        const element = checkElementsSelectors.getCheckElement(state.checkElements, id)
+        element && elementsIds.push(element.id)
+    });
+    return elementsIds;
 };

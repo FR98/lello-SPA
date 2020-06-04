@@ -11,15 +11,15 @@ import { normalize } from 'normalizr';
 
 import * as http from '../utils/http';
 import * as selectors from '../reducers';
-import * as actions from '../actions/events';
-import * as types from '../types/events';
-import * as schemas from '../schemas/events';
+import * as actions from '../actions/checklists';
+import * as types from '../types/checklists';
+import * as schemas from '../schemas/checklists';
 import {
     API_BASE_URL,
 } from '../settings';
 
 
-function* fetchEvents(action) {
+function* fetchChecklists(action) {
     try {
         const isAuth = yield select(selectors.isAuthenticated);
 
@@ -27,7 +27,7 @@ function* fetchEvents(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/boards/${action.payload.calendarId}/calendar-events/`,
+                `${API_BASE_URL}/cards/${action.payload.cardId}/checklist/`,
                 {
                     method: 'GET',
                     headers:{
@@ -40,28 +40,28 @@ function* fetchEvents(action) {
             if (http.isSuccessful(response.status)) {
                 const jsonResult = yield response.json();
                 const {
-                    entities: { events },
+                    entities,
                     result,
-                } = normalize(jsonResult, schemas.events);
-                yield put(actions.completeFetchingEvents(events, result));
+                } = normalize(jsonResult, schemas.checklists);
+                yield put(actions.completeFetchingChecklists(entities, result));
             } else {
                 const { non_field_errors } = yield response.json();
-                yield put(actions.failFetchingEvents(non_field_errors[0]));
+                yield put(actions.failFetchingChecklists(non_field_errors[0]));
             }
         }
     } catch (error) {
-        yield put(actions.failFetchingEvents('Connection failed!'));
+        yield put(actions.failFetchingChecklists('Connection failed!'));
     }
 }
     
-export function* watchFetchEvents() {
+export function* watchFetchChecklists() {
     yield takeEvery(
-        types.FETCH_EVENTS_STARTED,
-        fetchEvents,
+        types.FETCH_CHECKLISTS_STARTED,
+        fetchChecklists,
     );
 }
 
-function* addEvent(action) {
+function* addChecklist(action) {
     try {
         const isAuth = yield select(selectors.isAuthenticated);
 
@@ -69,7 +69,7 @@ function* addEvent(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/events/`,
+                `${API_BASE_URL}/checklists/`,
                 {
                     method: 'POST',
                     body: JSON.stringify(action.payload),
@@ -83,29 +83,29 @@ function* addEvent(action) {
             if (http.isSuccessful(response.status)) {
                 const jsonResult = yield response.json();
                 yield put(
-                    actions.completeAddingEvent(
+                    actions.completeAddingChecklist(
                         action.payload.id,
                         jsonResult,
                     )
                 );
             } else {
                 const { non_field_errors } = yield response.json();
-                yield put(actions.failAddingEvent(non_field_errors[0]));
+                yield put(actions.failAddingChecklist(non_field_errors[0]));
             }
         }
     } catch (error) {
-        yield put(actions.failAddingEvent('Connection failed!'));
+        yield put(actions.failAddingChecklist('Connection failed!'));
     }
 }
     
-export function* watchAddEvent() {
+export function* watchAddChecklist() {
     yield takeEvery(
-        types.ADD_EVENT_STARTED,
-        addEvent,
+        types.ADD_CHECKLIST_STARTED,
+        addChecklist,
     );
 }
 
-function* removeEvent(action) {
+function* removeChecklist(action) {
     try {
         const isAuth = yield select(selectors.isAuthenticated);
 
@@ -113,7 +113,7 @@ function* removeEvent(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/events/${action.payload.id}/`,
+                `${API_BASE_URL}/checklists/${action.payload.id}/`,
                 {
                     method: 'DELETE',
                     headers:{
@@ -124,20 +124,20 @@ function* removeEvent(action) {
             );
         
             if (http.isSuccessful(response.status)) {
-                yield put(actions.completeRemovingEvent());
+                yield put(actions.completeRemovingChecklist());
             } else {
                 const { non_field_errors } = yield response.json();
-                yield put(actions.failRemovingEvent(non_field_errors[0]));
+                yield put(actions.failRemovingChecklist(non_field_errors[0]));
             }
         }
     } catch (error) {
-        yield put(actions.failRemovingEvent('Connection failed!'));
+        yield put(actions.failRemovingChecklist('Connection failed!'));
     }
 }
     
-export function* watchRemoveEvent() {
+export function* watchRemoveChecklist() {
     yield takeEvery(
-        types.REMOVE_EVENT_STARTED,
-        removeEvent,
+        types.REMOVE_CHECKLIST_STARTED,
+        removeChecklist,
     );
 }

@@ -1,4 +1,4 @@
-import * as types from '../types/lists';
+import * as types from '../types/checklists';
 
 
 export const startFetchingChecklists = cardId => ({

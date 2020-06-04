@@ -1,9 +1,9 @@
 import { schema } from 'normalizr';
-import { elements } from './elements';
+import { checkElements } from './checkElements';
 
 
 export const checklist = new schema.Entity(
-    'checklists', {element_set: elements}
+    'checklists', {element_set: checkElements}
 );
 
 export const checklists = new schema.Array(checklist);
