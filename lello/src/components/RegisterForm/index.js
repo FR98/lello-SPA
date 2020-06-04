@@ -68,12 +68,10 @@ const RegisterForm = ({ handleSubmit }) => (
                     className="register-input"
                 />
                 <br/>
-                <Link to='/'>
-                    <GeneralBtn 
-                        text={"Enviar"}
-                        type={'submit'}
-                    />  
-                </Link>
+                <GeneralBtn 
+                    text={"Enviar"}
+                    type={'submit'}
+                />  
             </div>
         </div>
     </form>
