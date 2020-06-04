@@ -29,11 +29,12 @@ export default connect(
     (state, { listId }) => ({
         listId: listId,
         boardId: selectors.getSelectedBoard(state),
+        userId: selectors.getAuthUserID(state),
     }),
 )(
     reduxForm({
         form: 'addCard',
-        onSubmit({ title }, dispatch, { listId, boardId }) {
+        onSubmit({ title }, dispatch, { listId, boardId, userId }) {
             dispatch(
                 actions.startAddingCard({
                     id: uuid(),
@@ -41,7 +42,7 @@ export default connect(
                     lista: listId,
                     hours_estimated: 0,
                     hours_done: 0,
-                    assigned_to: []
+                    assigned_to: [ userId ]
                 }),
             );
             dispatch(reset('addCard'));

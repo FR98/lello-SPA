@@ -49,6 +49,18 @@ import {
   watchRemoveNotification,
 } from './notifications';
 
+import {
+  watchFetchChecklists,
+  watchAddChecklist,
+  watchRemoveChecklist,
+} from './checklists';
+
+import {
+  watchFetchCheckElements,
+  watchAddCheckElement,
+  watchRemoveCheckElement,
+} from './checkElements';
+
 
 function* mainSaga() {
   yield all([
@@ -74,6 +86,12 @@ function* mainSaga() {
     fork(watchFetchAudits),
     fork(watchFetchNotifications),
     fork(watchRemoveNotification),
+    fork(watchFetchChecklists),
+    fork(watchAddChecklist),
+    fork(watchRemoveChecklist),
+    fork(watchFetchCheckElements),
+    fork(watchAddCheckElement),
+    fork(watchRemoveCheckElement),
   ]);
 }
 

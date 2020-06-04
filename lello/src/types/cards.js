@@ -1,6 +1,6 @@
 
 // state:
-// -lists:
+// -cards:
 //     -byId
 //     -order
 //     -isFetching
