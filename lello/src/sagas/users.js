@@ -68,7 +68,7 @@ function* addUser(action) {
             `${API_BASE_URL}/users/`,
             {
                 method: 'POST',
-                body: JSON.stringify(action.payload),
+                body: JSON.stringify(action.payload.user),
                 headers:{
                     'Content-Type': 'application/json',
                 },
@@ -82,6 +82,21 @@ function* addUser(action) {
                     action.payload.id,
                     jsonResult,
                 )
+            );
+            console.log(jsonResult)
+            console.log(JSON.stringify({...action.payload.detail, user: jsonResult.id}))
+            const user = jsonResult.id
+            console.log(user)
+            yield call(
+                fetch,
+                `${API_BASE_URL}/userdetails/`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify({...action.payload.detail, user}),
+                    headers:{
+                        'Content-Type': 'application/json',
+                    },
+                },
             );
         } else {
             const { non_field_errors } = yield response.json();
