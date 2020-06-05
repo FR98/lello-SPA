@@ -35,6 +35,14 @@ const RegisterForm = ({ handleSubmit }) => (
                     component={ RenderInput }
                     className="register-input"
                 />
+                <label className="label-register">Email</label>
+                <Field
+                    name='email'
+                    type="text"
+                    placeholder="Email"
+                    component={ RenderInput }
+                    className="register-input"
+                />
                 <label className="label-register">Gender</label>
                 <Field
                     name='gender'
@@ -82,13 +90,14 @@ export default connect(
 )(
     reduxForm({
         form: 'addUser',
-        onSubmit({ username, gender, phone, birthdate, password }, dispatch) {
+        onSubmit({ username, email, gender, phone, birthdate, password }, dispatch) {
             dispatch(
                 actions.startAddingUser(
                     {
                         id: uuid(),
                         username,
                         password,
+                        email,
                     },
                     {
                         gender,
