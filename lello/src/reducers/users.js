@@ -85,6 +85,7 @@ const error = (state = null, action) => {
         case types.ADD_USER_COMPLETED:
             return null;
         case types.FETCH_USERS_FAILED:
+            return action.payload.error;
         case types.ADD_USER_FAILED:
             return action.payload.error;
         default: {
