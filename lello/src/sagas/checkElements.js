@@ -28,7 +28,7 @@ function* fetchCheckElement(action) {
             const token = yield select(selectors.getAuthToken);
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/checklists/${action.payload.checklistId}/checkElements/`,
+                `${API_BASE_URL}/checklists/${action.payload.checklistId}/elements/`,
                 {
                     method: 'GET',
                     headers:{

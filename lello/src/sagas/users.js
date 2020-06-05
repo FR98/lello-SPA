@@ -106,7 +106,7 @@ function* addUser(action) {
         yield put(actions.failAddingUser('Connection failed!'));
     }
 }
-    
+
 export function* watchAddUser() {
     yield takeEvery(
         types.ADD_USER_STARTED,
