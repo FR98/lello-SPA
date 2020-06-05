@@ -11,16 +11,17 @@ import BoardDescription from '../Board/BoardDescription';
 import * as selectors from '../../reducers';
 
 
-const NavbarBoard = ({ data, boardId }) => {
+const NavbarBoard = ({ data, boardId, boardData }) => {
     const { path, url } = useRouteMatch();
     return(
         <div className="navbarBoard-container">
             <div className="navbarBoard-left">
+                {console.log("tons", boardData)}
                 <label className="board-title">
-                    Proyecto web
+                    {boardData.name}
                 </label>
-                <GeneralBtn text="UVG Teams"/>
-                <GeneralBtn text="Público"/>
+                <GeneralBtn text={data.name}/>
+                <GeneralBtn text={boardData.is_private ? "Privado": "Público"}/>
             </div>
             <div className="navbarBoard-rigth">
                 <Link to={`${path}/calendar`}>
@@ -34,7 +35,8 @@ const NavbarBoard = ({ data, boardId }) => {
 
 export default connect(
     state => ({
-        data: state,
+        data: selectors.getTeam(state, selectors.getSelectedTeam(state)),
+        boardData: selectors.getBoard(state, selectors.getSelectedBoard(state)),
         boardId: selectors.getSelectedBoard(state),
     })
 )(NavbarBoard);
