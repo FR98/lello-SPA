@@ -5,11 +5,14 @@
 
 * Instalar dependencias
     ```shell
+    $ cd lello
     $ yarn install
+    $ npm install --save redux react-redux
     ```
 
 * Ejecutar
     ```shell
+    cd lello
     $ yarn start
     ```
 
